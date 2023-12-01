@@ -19,35 +19,25 @@ use App\Http\Controllers\Backend\PolicyController;
 use App\Http\Controllers\Backend\IndController;
 use App\Http\Controllers\Backend\basicsettingController;
 use App\Http\Controllers\Backend\slideController;
+use App\Http\Controllers\Backend\productController;
 use App\Http\Controllers\Frontend\searchController;
 use App\Http\Controllers\Frontend\userLoginController;
 use App\Http\Controllers\Frontend\orderController;
 use App\Http\Controllers\localizationControllar;
+use App\Models\product;
 use FontLib\Table\Type\name;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-/*-------------Admin route--------*/
-
 
 
 //localization
 Route::get('/local/{locale}',[localizationControllar::class, 'setLang'])->name('localization');
 
-
+//frontend show url
 Route::get('/', function()
 {
-    return view('frontend.index');
+    $products = product::where('status',1)->get();
+    return view('frontend.index',['products'=>$products]);
 });
+
 ///admin login
 Route::prefix('admin')->group(function (){
 
@@ -72,6 +62,7 @@ Route::prefix('admin')->group(function (){
 
 
 });
+
 //user login registration
 Route::prefix('user')->group(function (){
 
@@ -81,12 +72,15 @@ Route::prefix('user')->group(function (){
 
     Route::get('/register',[userLoginController::class, 'IndexRegister'])->name('register-index');
     Route::post('/register/store',[userLoginController::class, 'registerStore'])->name('register-store');
-
+    //profile
     Route::get('/profile',[userLoginController::class, 'userProfile'])->name('user-profile-index');
     Route::get('/order',[userLoginController::class, 'userOrder'])->name('order-show-user-profile');
     Route::get('/profile/edit',[userLoginController::class, 'userProfileEdit'])->name('user-profile-edit');
     Route::post('/image/update',[userLoginController::class, 'userProfileImage'])->name('userProfileImage');
     Route::post('/info/update',[userLoginController::class, 'userInfo'])->name('userinfo-update');
+    //user product show
+    Route::get('/product/order',[userLoginController::class, 'productOrderIndex'])->name('product-order');
+    Route::get('/product/invoice/{id}',[userLoginController::class, 'productOrderDownload'])->name('product-download');
 
 
 });
@@ -94,19 +88,19 @@ Route::prefix('user')->group(function (){
 //frontend index page
 Route::prefix('user')->group(function (){
     Route::get('/service/details/{id}', [IndexController::class, 'serviceDetailsPage'])->name('details-service-page');
+    Route::get('/product/details/{id}', [IndexController::class, 'ProductDetailsPage'])->name('product-preview');
 
 
 });
 
 
-
-//order
+//order service
 Route::prefix('order')->group(function (){
 
     Route::get('/checkout/{product_id}',[orderController::class, 'checkOutIndex'])->name('checkOut-index');
     Route::post('/checkout/store',[orderController::class, 'checkStore'])->name('checkout-store');
     Route::get('/all',[orderController::class, 'allOrder'])->name('order-show');
-    Route::post('/statis/update',[orderController::class, 'statusUpdate'])->name('status-update');
+    Route::post('/status/update',[orderController::class, 'statusUpdate'])->name('status-update');
     Route::get('/invoice/{id}',[orderController::class, 'invoice'])->name('invoice');
     Route::get('/payment',[orderController::class, 'userPayment'])->name('order-user-payment');
     Route::get('/user/payment/download/{id}',[orderController::class, 'userPaymentDownload'])->name('user-download-payment');
@@ -118,14 +112,45 @@ Route::prefix('order')->group(function (){
     Route::get('/admin/invoice/delete/{id}',[orderController::class, 'InvoiceAdminDelete'])->name('payment.delete');
 
 
+//product order admin
+Route::get('/product/all',[orderController::class, 'ProductOrderIndex'])->name('product-order-show');
+Route::get('/product/invoice/{id}',[orderController::class, 'ProductOrderInvoice'])->name('admin-product-invoice');
+Route::post('/status/update',[orderController::class, 'ProductstatusUpdate'])->name('product-status-update');
+
+
 });
 
-//frontend category
-
-Route::get('/frontend/category/{frontCat_id}', [CategoryController::class, 'frontCategory'])->name('front_category');
-
-
 /*-------------End Admin route--------*/
+
+
+
+// Admin Product All Routes
+
+Route::prefix('product')->group(function(){
+
+    Route::get('/add', [productController::class, 'ProductIndex'])->name('product-index');
+    Route::get('/manage', [productController::class, 'ProductManageIndex'])->name('product-manage');
+    Route::post('/store', [productController::class, 'ProductStore'])->name('product-store');
+
+    Route::get('/edit/{id}', [productController::class, 'EditProduct'])->name('product.edit');
+
+    Route::post('/update', [productController::class, 'ProductUpdate'])->name('product-update');
+
+    Route::get('/inactive/{id}', [productController::class, 'ProductInactive'])->name('product.inactive');
+
+    Route::get('/active/{id}', [productController::class, 'productActive'])->name('product.active');
+
+    Route::get('/delete/{id}', [productController::class, 'ProductDelete'])->name('product.delete');
+
+    //frontend check out
+
+    Route::get('/checkout/{id}', [productController::class, 'productCheckOutIndex'])->name('product.checkout');
+    Route::post('/checkout/store', [productController::class, 'productCheckOutStore'])->name('product-checkout-store');
+
+
+});
+
+
 
 // Admin Category All Routes
 
@@ -182,7 +207,7 @@ Route::get('/child/delete/{id}', [SubCategoryController::class, 'ChildCategoryDe
 
 // Admin Content All Routes
 
-Route::prefix('content')->group(function(){
+Route::prefix('service')->group(function(){
 
     Route::get('/add', [ContentController::class, 'AddContent'])->name('add-content');
 

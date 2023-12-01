@@ -12,6 +12,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\mailNotify;
 use App\Models\Admin;
+use App\Models\productOrder;
 use App\Models\Gallery;
 use Exception;
 
@@ -225,5 +226,45 @@ function userPaymentDownload($id){
     return $pdf->stream('invoice-pdf');
 
 }//end
+
+// admin product order
+
+function ProductOrderIndex(){
+
+    $products = productOrder::all();
+
+    return view('admin.product.order.index',['products'=>$products]);
+}//end
+
+function ProductOrderInvoice($id){
+
+    $products = productOrder::find($id);
+    $pdf = Pdf::loadView('frontend.auth.product.invoice', ['products'=>$products])->setOptions(['defaultFont' => 'sans-serif']);
+    return $pdf->stream('invoice-pdf');
+
+
+}//end
+
+
+function ProductstatusUpdate(Request $request)
+    {
+        $id = $request->id;
+
+
+        productOrder::findOrFail($id)->update([
+
+            'status' => $request->status,
+
+
+        ]);
+
+
+        $notification = array(
+            'message' => 'Status Update Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    } //end
 
 }

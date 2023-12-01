@@ -73,8 +73,9 @@ $setting = App\Models\setting::find(1);
                         <button class="dropbtn">Dashboard</button>
                         <div class="dropdown-content">
                             <a class="dropdown-item" href="{{ route('user-profile-index') }}">Profile</a>
-                            <a class="dropdown-item" href="{{ route('order-show-user-profile') }}">Order</a>
-                            <a class="dropdown-item" href="{{ route('order-user-payment') }}">Payment invoice</a>
+                            <a class="dropdown-item" href="{{ route('order-show-user-profile') }}">service Order</a>
+                            <a class="dropdown-item" href="{{ route('order-user-payment') }}">service Payment invoice</a>
+                            <a class="dropdown-item" href="{{ route('product-order') }}">product order</a>
                             <a class="dropdown-item" href="{{ route('logout-user') }}">Logout</a>
 
                         </div>
@@ -123,8 +124,9 @@ $setting = App\Models\setting::find(1);
                     <button class="dropbtn">Dashboard</button>
                     <div class="dropdown-content">
                         <a class="dropdown-item" href="{{ route('user-profile-index') }}">Profile</a>
-                        <a class="dropdown-item" href="{{ route('order-show-user-profile') }}">Order</a>
-                        <a class="dropdown-item" href="{{ route('order-user-payment') }}">Payment invoice</a>
+                        <a class="dropdown-item" href="{{ route('order-show-user-profile') }}">service Order</a>
+                        <a class="dropdown-item" href="{{ route('order-user-payment') }}">service Payment invoice</a>
+                        <a class="dropdown-item" href="{{ route('product-order') }}">product order</a>
                         <a class="dropdown-item" href="{{ route('logout-user') }}">Logout</a>
 
                     </div>

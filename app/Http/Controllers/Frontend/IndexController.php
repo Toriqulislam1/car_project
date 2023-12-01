@@ -15,6 +15,7 @@ use App\Models\Childcategory;
 use App\Models\Contact;
 use App\Models\Blog;
 use App\Models\privacy;
+use App\Models\product;
 use App\Models\Terms;
 
 class IndexController extends Controller
@@ -26,6 +27,13 @@ function serviceDetailsPage($id){
     $details = Services::find($id);
 
     return view('frontend.previewpage.previewService',['details'=>$details]);
+}//end
+
+function ProductDetailsPage($id){
+
+    $Pro_details = product::find($id);
+
+    return view('frontend.previewpage.productPreview',['details'=>$Pro_details]);
 }//end
 
 

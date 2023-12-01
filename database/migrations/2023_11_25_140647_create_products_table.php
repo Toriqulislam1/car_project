@@ -17,10 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('price');
+            $table->string('unit');
             $table->string('discount');
             $table->string('image');
             $table->string('details');
             $table->string('stock');
+            $table->integer('status');
             $table->timestamps();
         });
     }

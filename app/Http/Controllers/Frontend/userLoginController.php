@@ -9,7 +9,8 @@ use App\Models\User;
 use App\Models\order;
 use App\Models\Gallery;
 use App\Models\Services;
-
+use App\Models\productOrder;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Hash;
 use Image;
 
@@ -157,5 +158,25 @@ class userLoginController extends Controller
         }
         return back();
 
-    }
+    }//end
+
+    //product order show
+
+    function productOrderIndex(){
+
+        $products = productOrder::where('user_id',Auth::user()->id)->get();
+
+
+        return view('frontend.auth.product.productUserShow',['products'=>$products]);
+    }//end
+
+    function productOrderDownload($id){
+        $products = productOrder::find($id);
+        $pdf = Pdf::loadView('frontend.auth.product.invoice', ['products'=>$products])->setOptions(['defaultFont' => 'sans-serif']);
+        return $pdf->stream('invoice-pdf');
+
+
+    }//end
+
+
 }

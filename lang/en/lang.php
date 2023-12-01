@@ -27,6 +27,7 @@ return [
     'OrderNow'=>'Order Now',
     'SelectTemplate'=>'Select Template',
     'SelectBrand'=>'Select Brand',
+    'qty'=>'quantity',
 
 
 ];

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2023 at 02:52 PM
+-- Generation Time: Dec 01, 2023 at 06:24 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -318,7 +318,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (27, '2023_01_31_114201_create_slides_table', 22),
 (28, '2023_04_08_192915_create_cache_table', 23),
 (29, '2023_10_22_143850_create_orders_table', 24),
-(30, '2023_10_29_145640_create_payments_table', 25);
+(30, '2023_10_29_145640_create_payments_table', 25),
+(31, '2023_11_25_140647_create_products_table', 26),
+(32, '2023_12_01_003619_create_product_orders_table', 27);
 
 -- --------------------------------------------------------
 
@@ -476,6 +478,63 @@ CREATE TABLE `privacies` (
 
 INSERT INTO `privacies` (`id`, `privacy_title`, `description`, `created_at`, `updated_at`) VALUES
 (4, 'policy car admin panel', '<p>policy car&nbsp;admin panel</p>', '2023-10-20 04:11:23', '2023-10-20 04:11:23');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `price` varchar(255) NOT NULL,
+  `unit` varchar(255) NOT NULL,
+  `discount` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `details` varchar(255) NOT NULL,
+  `stock` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `title`, `price`, `unit`, `discount`, `image`, `details`, `stock`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Omnis quod hic ullam', '83', 'Ad ea nisi mollit qu', '7', 'upload/product/1784024836334840.jpg', '<p>Long Description</p>', '-413', 1, '2023-11-30 15:11:06', '2023-11-30 20:32:15'),
+(3, 'Nemo in sit aliquip', '765', 'Minus voluptatem de', '75', 'upload/product/1784024812783615.jpg', '<p>Long Description</p>', '11', 1, '2023-11-30 15:10:43', '2023-11-30 15:10:43');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_orders`
+--
+
+CREATE TABLE `product_orders` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `location` varchar(255) NOT NULL,
+  `order_number` varchar(255) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `status` varchar(250) NOT NULL DEFAULT 'panding',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product_orders`
+--
+
+INSERT INTO `product_orders` (`id`, `product_id`, `user_id`, `name`, `email`, `phone`, `location`, `order_number`, `qty`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 25, 'Kane Newman', 'gokubi@mailinator.com', '+1 (124) 768-7345', 'Ea molestiae corpori', '#257099', 2, 'cancel', NULL, '2023-11-30 23:20:33'),
+(2, 3, 25, 'Gail Mercer', 'mycerubolo@mailinator.com', '+1 (157) 656-1319', 'Consequatur Non lab', '#252346', 106, 'panding', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -652,7 +711,9 @@ INSERT INTO `users` (`id`, `name`, `mobile`, `email`, `email_verified_at`, `pass
 (19, 'Hayden Hampton', '+1 (616) 953-5122', 'sevirij@mailinator.com', NULL, '$2y$10$Wa6dkU51H6IsYhbwlN1sF.SBb7i9V.1jYB4je6hyD9uSfIWCIOMQC', NULL, NULL, NULL, NULL),
 (21, 'Jack Hart', '+1 (408) 283-3061', 'cysocirum@mailinator.com', NULL, '$2y$10$fi/zjTTE227ivji.ImzRY.Ivq8DUDIBNNGLjUclfhsjaAVM4/6uji', NULL, NULL, NULL, NULL),
 (22, 'Darrel Hernandez', '+1 (618) 331-3153', 'bomypewix@mailinator.com', NULL, '$2y$10$1BMrEkwv6DTvxp0dys7az.CLnoXNZJl4NxInsR9WVRVxR5hAVC47u', NULL, NULL, NULL, NULL),
-(23, 'Uriel Stark', '+1 (138) 607-3113', 'tihi@mailinator.com', NULL, '$2y$10$ao0Tb0LgjHTzPavlfzRf3ePv8N7S5Qp4oLRrwgFDDzs8UCj.9sc6m', NULL, NULL, NULL, NULL);
+(23, 'Uriel Stark', '+1 (138) 607-3113', 'tihi@mailinator.com', NULL, '$2y$10$ao0Tb0LgjHTzPavlfzRf3ePv8N7S5Qp4oLRrwgFDDzs8UCj.9sc6m', NULL, NULL, NULL, NULL),
+(24, 'Karina Pennington', '+1 (815) 789-2331', 'fuhudicu@mailinator.com', NULL, '$2y$10$zsJfJ.aMjC2ZtHYILkO/n.0VV26FRTOKn83E4cRGil19zIhVk3pX.', NULL, NULL, NULL, NULL),
+(25, 'Sophia Sanford', '+1 (327) 357-5361', 'legytivono@mailinator.com', NULL, '$2y$10$2TxRK.lHo5umdiOxYaoU3ex/fvqCPiI3yWpj5IZME85x0xnhCh76S', NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -783,6 +844,18 @@ ALTER TABLE `privacies`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product_orders`
+--
+ALTER TABLE `product_orders`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `services`
 --
 ALTER TABLE `services`
@@ -887,7 +960,7 @@ ALTER TABLE `industries`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -926,6 +999,18 @@ ALTER TABLE `privacies`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `product_orders`
+--
+ALTER TABLE `product_orders`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
@@ -959,7 +1044,7 @@ ALTER TABLE `terms`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

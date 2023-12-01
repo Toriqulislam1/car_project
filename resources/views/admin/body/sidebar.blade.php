@@ -25,12 +25,25 @@
           </a>
         </li>
 
+        <li class="treeview">
+            <a href="#">
+              <i data-feather="message-circle"></i>
+              <span>Product</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-right pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ route('product-index')}}"><i class="ti-more"></i>Create</a></li>
+              <li><a href="{{ route('product-manage')}}"><i class="ti-more"></i> Manage Product</a></li>
+            </ul>
+          </li>
 
 
         <li class="treeview">
           <a href="#">
             <i data-feather="message-circle"></i>
-            <span>GA</span>
+            <span>Template short code</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
@@ -40,6 +53,8 @@
             <li><a href="{{ route('add-gallery')}}"><i class="ti-more"></i>Template add</a></li>
           </ul>
         </li>
+
+
 
         <li class="treeview">
           <a href="#">
@@ -89,7 +104,21 @@
         <li class="treeview">
             <a href="#">
               <i data-feather="file"></i>
-              <span>Order</span>
+              <span>Product Order</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-right pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+
+              <li><a href="{{ route('product-order-show')}}"><i class="ti-more"></i>All order</a></li>
+             
+            </ul>
+          </li>
+        <li class="treeview">
+            <a href="#">
+              <i data-feather="file"></i>
+              <span>service Order</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-right pull-right"></i>
               </span>
