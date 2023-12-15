@@ -18,10 +18,10 @@ $setting = App\Models\setting::find(1);
     <div class="row v-center justify-content-between">
     <div class="col-lg-6">
     <div class="header-headings">
-    <span class="text-effect-1">Solution-Oriented Services</span>
-    <h1 class="wow fadeIn mt20 mb30 cd-headline clip" data-wow-delay=".4s">Creative service Company We Create
-    <span class="cd-words-wrapper"> <b class="is-visible">car</b> </span> </h1>
-    <p class="wow fadeIn" data-wow-delay=".8s">Disney Pixar Cars Storybook Collection: Storybook Collection (Treasury) Hardcover – 1 January 2015</p>
+    <span class="text-effect-1">@lang('lang.AllVehicle')</span>
+    <h1 class="wow fadeIn mt20 mb30 cd-headline clip" data-wow-delay=".4s">@lang('lang.Allvehicle_shor')
+    {{-- <span class="cd-words-wrapper"> <b class="is-visible">car</b> </span> </h1> --}}
+    <p class="wow fadeIn" data-wow-delay=".8s">@lang('lang.Allvehicle_shor_span')</p>
 
     <div class="niwaxbtnvideo mt30">
     <div class="video-btn  d-flex v-center gap10">
@@ -76,7 +76,6 @@ $setting = App\Models\setting::find(1);
     <div class="clearfix"></div>
     </form>
 
-
     </div>
     </div>
     </div>
@@ -89,6 +88,15 @@ $setting = App\Models\setting::find(1);
 	{{-- product start --}}
     <div class="shop-products-bhv pt20 pb60">
         <div class="container">
+
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                <div class="common-heading pp">
+
+                <h2 class="text-center">@lang('lang.product-title')</h2>
+                </div>
+                </div>
+                </div>
 
             <div class="row">
                 @foreach ($products as $product )
@@ -115,8 +123,8 @@ $setting = App\Models\setting::find(1);
 
                                 <div class="rpb-shop-inf-rr">
                                     <div class="rpb-shop-flxbt">
-                                    <a href="{{route('product-preview', $product->id)  }}" class="rpb-shop-prev" data-bs-toggle="tooltip" title="View the Item Demo">Preview</a>
-                                    <a href="{{ route('product.checkout',$product->id) }}" class="rpb-shop-prev" data-bs-toggle="tooltip" title="View the Item Demo">Buy now</a>
+                                    {{-- <a href="{{route('product-preview', $product->id)  }}" class="rpb-shop-prev" data-bs-toggle="tooltip" title="View the Item Demo">Preview</a> --}}
+                                    <a href="{{ route('product.checkout',$product->id) }}" class="rpb-shop-prev" data-bs-toggle="tooltip" title="View the Item Demo">@lang('lang.buy_now')</a>
 
                                 </div>
                                 </div>
