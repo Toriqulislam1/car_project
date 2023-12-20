@@ -22,7 +22,7 @@ class CategoryController extends Controller
              'category_name' => 'required',
 
          ],[
-             'category_name.required' => 'Input Category Name',
+             'category_name.required' => 'Input Brand Name',
 
          ]);
 
@@ -30,7 +30,7 @@ class CategoryController extends Controller
 
      Category::insert([
          'category_name' => $request->category_name,
-         'slug' => strtolower(str_replace(' ', '-',$request->category_name)),
+         'brand_bn' => $request->brand_bn,
 
 
          ]);

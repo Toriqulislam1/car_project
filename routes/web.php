@@ -26,6 +26,46 @@ use App\Http\Controllers\Frontend\orderController;
 use App\Http\Controllers\localizationControllar;
 use App\Models\product;
 use FontLib\Table\Type\name;
+use App\Models\Articles;
+use App\Models\Language;
+
+
+// database change translatoion
+
+
+Route::get('/test', function()
+{
+
+// Create an article with translations
+$article = Articles::create(['status' => true]);
+
+$english = Language::where('code', 'en')->first();
+$spanish = Language::where('code', 'bn')->first();
+
+$article->translations()->create([
+    'lang_id' => $english->id,
+    'title' => 'English Title',
+    'description' => 'English Description',
+]);
+
+$article->translations()->create([
+    'lang_id' => $spanish->id,
+    'title' => 'bangla Title',
+    'description' => 'bangla Description',
+]);
+
+
+    return back();
+});
+
+
+
+
+
+
+
+
+
 
 
 //localization
@@ -142,7 +182,7 @@ Route::prefix('product')->group(function(){
 
     Route::get('/delete/{id}', [productController::class, 'ProductDelete'])->name('product.delete');
 
-    //frontend check out
+    //frontend check out product
 
     Route::get('/checkout/{id}', [productController::class, 'productCheckOutIndex'])->name('product.checkout');
     Route::post('/checkout/store', [productController::class, 'productCheckOutStore'])->name('product-checkout-store');
@@ -203,10 +243,7 @@ Route::get('/child/delete/{id}', [SubCategoryController::class, 'ChildCategoryDe
     });
 
 
-
-
 // Admin Content All Routes
-
 Route::prefix('service')->group(function(){
 
     Route::get('/add', [ContentController::class, 'AddContent'])->name('add-content');

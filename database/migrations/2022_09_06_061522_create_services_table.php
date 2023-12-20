@@ -22,8 +22,13 @@ return new class extends Migration
             $table->string('breadcrumb');
             $table->string('content_title');
             $table->string('content_descrip');
-            $table->string('long_descrip');
+            $table->text('long_descrip');
             $table->string('thamble');
+            $table->string('breadcrumb_title_bn');
+            $table->string('service_title_bn');
+            $table->string('short_descrip_bn');
+            $table->text('long_descrip_bn');
+
             $table->integer('status')->default(0);
             $table->timestamps();
         });

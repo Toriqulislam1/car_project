@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
 
 
-    <link href="{{ asset('frontend/assets/images/favicon.png') }}" rel="icon">
+    <link href="{{ asset('frontend/assets/images/logo11.jpg') }}" rel="icon">
 
 	<meta charset="utf-8"/>
 	<title>@yield('title') </title>

@@ -19,6 +19,7 @@ class ContactController extends Controller
         $data['email_address'] = $request->email_address;
         $data['mobile'] = $request->mobile;
         $data['subject'] = $request->subject;
+        $data['location'] = $request->location;
         $data['message'] = $request->message;
         DB::table('contacts')->insert($data);
 

@@ -47,6 +47,10 @@ class ContentController extends Controller
 			'long_descrip' => $request->long_descrip,
 			'breadcrumb' => $save_url,
 			'thamble' => $save,
+            'breadcrumb_title_bn' => $request->breadcrumb_title_bn,
+            'service_title_bn' => $request->service_title_bn,
+            'short_descrip_bn' => $request->short_descrip_bn,
+            'long_descrip_bn' => $request->long_descrip_bn,
 			'status' => 1,
       		'created_at' => Carbon::now(),
 

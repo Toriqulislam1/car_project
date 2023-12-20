@@ -301,7 +301,7 @@ $orderinfo = App\Models\order::where('id',$service->order_id)->get();
         <div class="invoice-header">
             <div class="invoice-flex-contents">
                 <div class="invoice-logo">
-                    <img src="{{ asset($setting->first()->logo) }}" alt="">
+                    <img src="https://24carservicedhaka.com/upload/logo/1782832158619925.jpg" alt="">
                 </div>
                 <div class="invoice-header-contents" style="float:right;margin-top:-120px;">
 
@@ -375,9 +375,6 @@ $orderinfo = App\Models\order::where('id',$service->order_id)->get();
                 </table>
             </div>
         </div>
-
-
-
     </div>
 </div>
 

@@ -22,7 +22,7 @@ car
                             <div class="mt20 tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1a">
 
                                 <h4 class="mb10">Description</h4>
-                                <p class="mb30">{!! $details->details !!}</p>
+                                <p class="mb30"> {!!session()->get('locale')=='bn'? $details->product_long_descrp_bn:$details->details  !!}</p>
 
                             </div>
                         </div>
@@ -50,7 +50,6 @@ car
                         </li>
 
                         <li>
-
                             <a href="{{ route('product.checkout',$details->id) }}" class="btn-main bg-btn3 lnk w-100 mt10">Buy Now <span class="circle"></span> </a>
                         </li>
 

@@ -19,11 +19,10 @@ class GalleryController extends Controller
 
     public function StoreGallery(Request $request){
 
-
-
-
+        
 		Gallery::insert([
 			'gallery' => $request->gallery,
+			'model_name_bn' => $request->model_name_bn,
 			'status' => 1,
       		'created_at' => Carbon::now(),
 
@@ -32,7 +31,7 @@ class GalleryController extends Controller
 
 
 		$notification = array(
-			'message' => 'GA Inserted Successfully',
+			'message' => 'Model Inserted Successfully',
 			'alert-type' => 'success'
 		);
 
@@ -60,7 +59,10 @@ class GalleryController extends Controller
 
 		Gallery::findOrFail($pro_id)->update([
 
+
+
 			'gallery' =>  $request->gallery,
+            'model_name_bn' => $request->model_name_bn,
 			'status' => 1,
 			'created_at' => Carbon::now(),
 
@@ -69,7 +71,7 @@ class GalleryController extends Controller
 
 
 		$notification = array(
-			'message' => 'GA Update Successfully',
+			'message' => 'Model Update Successfully',
 			'alert-type' => 'success'
 		);
 
@@ -84,7 +86,7 @@ class GalleryController extends Controller
 
 
 		$notification = array(
-		   'message' => 'GA Deleted Successfully',
+		   'message' => 'Model Deleted Successfully',
 		   'alert-type' => 'success'
 	   );
 
@@ -95,7 +97,7 @@ class GalleryController extends Controller
 	public function GalleryInactive($id){
 		Gallery::findOrFail($id)->update(['status' => 0]);
 		$notification = array(
-		   'message' => 'GA Inactive',
+		   'message' => 'Model Inactive',
 		   'alert-type' => 'success'
 	   );
 
@@ -104,7 +106,7 @@ class GalleryController extends Controller
 	public function GalleryActive($id){
 		Gallery::findOrFail($id)->update(['status' => 1]);
 		   $notification = array(
-			  'message' => 'GA Active',
+			  'message' => 'Model Active',
 			  'alert-type' => 'success'
 		  );
 

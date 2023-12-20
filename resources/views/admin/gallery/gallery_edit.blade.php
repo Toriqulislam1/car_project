@@ -43,7 +43,7 @@
 
 
     <div class="form-group">
-            <h5>GA Upate <span class="text-danger">*</span></h5>
+            <h5>Model Name EN <span class="text-danger">*</span></h5>
             <div class="controls">
             <input type="text" name="gallery" class="form-control" value="{{ $gallery->gallery }}"  required="" >
             @error('gallery')
@@ -53,6 +53,16 @@
                 </div>
      </div>
 
+     <div class="form-group">
+        <h5>Model Name BN<span class="text-danger">*</span></h5>
+        <div class="controls">
+            <input type="text" name="model_name_bn" value="{{ $gallery->model_name_bn }}" class="form-control" required="">
+            @error('model_name_bn')
+            <span class="text-danger">{{ $message }}</span>
+            @enderror
+            <img src="" id="mainThmb">
+        </div>
+    </div>
 
     <div class="text-xs-right">
     <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Now">

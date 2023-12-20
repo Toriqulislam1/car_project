@@ -25,7 +25,7 @@
 			<div class="col-8">
 				<div class="box">
 					<div class="box-header">
-						<h4 class="box-title">Main category Table</h4>
+						<h4 class="box-title">Main Brand Table</h4>
 					</div>
 					<div class="box-body">
 						<div class="table-responsive">
@@ -84,6 +84,15 @@
             <h5>Input Brand Name  <span class="text-danger">*</span></h5>
             <div class="controls">
             <input type="text"  name="category_name" class="form-control" >
+            @error('category_name')
+            <span class="text-danger">{{ $message }}</span>
+            @enderror
+            </div>
+            </div>
+            <div class="form-group">
+            <h5>Input Brand Bangla  <span class="text-danger">*</span></h5>
+            <div class="controls">
+            <input type="text"  name="brand_bn" class="form-control" >
             @error('category_name')
             <span class="text-danger">{{ $message }}</span>
             @enderror

@@ -48,8 +48,8 @@
 <div class="col-lg-8 block-1">
 <div class="common-heading text-l pl25">
   <span>Overview</span>
-  <h2>{{ $services->content_title}}</h2>
-  <p>{{ $services->content_descrip}}</p>
+  <h2>{{ session()->get('locale')=='bn'?  $item->service_title_bn:  $services->content_title}}</h2>
+  <p>{{ session()->get('locale')=='bn'?  $item->short_descrip_bn:  $services->content_descrip}}</p>
 
 </div>
 </div>
@@ -71,7 +71,7 @@
 <div class="col-lg-8 block-1">
 <div class="common-heading text-l pl25">
   <span>Details</span>
-  <p>{!! $services->long_descrip !!}</p>
+  <p>{!! session()->get('locale')=='bn'?  $item->long_descrip_bn:  $services->long_descrip!!}</p>
 
 </div>
 </div>

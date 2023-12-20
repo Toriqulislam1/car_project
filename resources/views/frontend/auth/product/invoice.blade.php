@@ -296,7 +296,7 @@ $setting = App\Models\setting::orderBy('id','desc')->get();
         <div class="invoice-header">
             <div class="invoice-flex-contents">
                 <div class="invoice-logo">
-                    <img src="{{ asset($setting->first()->logo) }}" alt="">
+                    {{-- <img src="https://24carservicedhaka.com/upload/logo/1782832158619925.jpg" alt=""> --}}
                 </div>
                 <div class="invoice-header-contents" style="float:right;margin-top:-120px;">
 
@@ -337,7 +337,11 @@ $setting = App\Models\setting::orderBy('id','desc')->get();
                 </thead>
                 <tbody>
                 <tr>
-                    <td>{{ $products->productRelOrder->title}}</td>
+                    <td>
+                        {{ $products->productRelOrder->title}}<br>
+
+                        {{ $products}}<br>
+                    </td>
                     <td>{{  ($products->productRelOrder->price - $products->productRelOrder->discount) * $products->qty }}</td>
                     <td>{{ $products->qty}}</td>
                     <td>{{ Carbon\Carbon::parse($products->created_at)}}</td>

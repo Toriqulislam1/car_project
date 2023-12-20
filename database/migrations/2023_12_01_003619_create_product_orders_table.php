@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('location');
             $table->string('order_number');
+            $table->string('extra_product_id');
             $table->integer('qty');
             $table->string('status')->default('panding');
             $table->timestamps();

@@ -43,14 +43,14 @@
         <li class="treeview">
           <a href="#">
             <i data-feather="message-circle"></i>
-            <span>Template short code</span>
+            <span>Car Model</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
 
-            <li><a href="{{ route('add-gallery')}}"><i class="ti-more"></i>Template add</a></li>
+            <li><a href="{{ route('add-gallery')}}"><i class="ti-more"></i>Car model add</a></li>
           </ul>
         </li>
 
@@ -112,7 +112,7 @@
             <ul class="treeview-menu">
 
               <li><a href="{{ route('product-order-show')}}"><i class="ti-more"></i>All order</a></li>
-             
+
             </ul>
           </li>
         <li class="treeview">

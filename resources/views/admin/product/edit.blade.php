@@ -138,11 +138,7 @@
 		</div> <!-- end 3rd row  -->
 
 
-
-
-
-
-<div class="row"> <!-- start 3rd row  -->
+        <div class="row"> <!-- start 3rd row  -->
 
 
 			<div class="col-md-12">
@@ -160,6 +156,130 @@
 			</div> <!-- end col md 12 -->
 
 		</div> <!-- end 3rd row  -->
+
+
+
+   {{-- product section bangla --}}
+
+   <div class="row">
+    <!-- start 2nd row  -->
+
+
+    <div class="col-md-4">
+
+        <div class="form-group">
+            <h5>Product Title Bn <span class="text-danger">*</span></h5>
+            <div class="controls">
+                <input type="text" name="title_bn" value="{{ $products->title_bn }}" class="form-control" required="">
+                @error('title')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+
+    </div> <!-- end col md 6 -->
+
+
+    <div class="col-md-4">
+
+        <div class="form-group">
+            <h5>Unit price Bn <span class="text-danger">*</span></h5>
+            <div class="controls">
+                <input type="number" name="price_bn" value="{{ $products->price_bn }}" class="form-control" required="">
+                @error('price')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+                <img src="" id="mainThmb">
+            </div>
+        </div>
+
+
+    </div> <!-- end col md 6 -->
+
+    <div class="col-md-4">
+
+        <div class="form-group">
+            <h5>Product Stock Bn <span class="text-danger">*</span></h5>
+            <div class="controls">
+                <input type="number" name="stock_bn" value="{{ $products->stock_bn }}" class="form-control" required="">
+                @error('stock')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+
+    </div> <!-- end col md 6 -->
+
+
+
+</div> <!-- end 2nd row  -->
+
+<div class="row">
+    <!-- start 3rd row  -->
+
+
+
+    <div class="col-md-4">
+
+        <div class="form-group">
+            <h5>Discount Price flat Bn<span class="text-danger">*</span></h5>
+            <div class="controls">
+                <input type="number" name="discount_bn" value="{{ $products->discount_bn }}" class="form-control" required="">
+                @error('discount')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+
+    </div> <!-- end col md 6 -->
+
+
+
+    <div class="col-md-4">
+
+        <div class="form-group">
+            <h5>Product unit Bn<span class="text-danger">*</span></h5>
+            <div class="controls">
+                <input type="text" name="unit_bn" value="{{ $products->unit_bn }}" class="form-control" required="">
+                @error('unit')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+
+    </div> <!-- end col md 4 -->
+
+
+</div> <!-- end 3rd row  -->
+
+
+<div class="row">
+    <!-- start 3rd row  -->
+
+
+    <div class="col-md-12">
+
+        <div class="form-group">
+            <h5>Product Description BN<span class="text-danger">*</span></h5>
+            <div class="controls">
+                <textarea id="editor2" name="product_long_descrp_bn" rows="10" cols="80">
+                    {{ $products->product_long_descrp_bn }}
+                </textarea>
+            </div>
+        </div>
+
+
+    </div> <!-- end col md 12 -->
+
+</div> <!-- end 3rd row  -->
+
+
+        {{-- product section bangla end--}}
+
+
+
+
+
 
 	 <hr>
 

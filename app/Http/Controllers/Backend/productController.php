@@ -41,6 +41,13 @@ class productController extends Controller
 			'details' =>$request->details,
 			'stock' => $request->stock,
 
+			'title_bn' => $request->title_bn,
+			'price_bn' => $request->price_bn,
+			'stock_bn' => $request->stock_bn,
+			'discount_bn' => $request->discount_bn,
+			'unit_bn' => $request->unit_bn,
+            'product_long_descrp_bn' => $request->product_long_descrp_bn,
+
 			'status' => 1,
       		'created_at' => Carbon::now(),
 
@@ -89,6 +96,16 @@ class productController extends Controller
 			'image' => $save_url,
 			'details' =>$request->details,
 			'stock' => $request->stock,
+
+			'title_bn' => $request->title_bn,
+			'price_bn' => $request->price_bn,
+			'stock_bn' => $request->stock_bn,
+			'discount_bn' => $request->discount_bn,
+			'unit_bn' => $request->unit_bn,
+			'product_long_descrp_bn' => $request->product_long_descrp_bn,
+
+
+
 
 			'status' => 1,
       		'created_at' => Carbon::now(),
@@ -159,6 +176,10 @@ class productController extends Controller
     }
 
     function productCheckOutStore(Request $request){
+        $products_id = $request->product;
+
+        $afterjson =json_encode($products_id);
+
 
         if(Auth::user()){
 
@@ -171,6 +192,7 @@ class productController extends Controller
                 'user_id' => Auth::user()->id,
                 'order_number' => "#" . Auth::user()->id . rand(10, 9999),
                 'qty'=>$request->qty,
+                'extra_product_id' =>$afterjson,
 
             ]);
             product::where('id', $request->product_id)->decrement('stock', $request->qty);

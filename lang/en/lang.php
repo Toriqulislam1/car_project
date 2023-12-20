@@ -7,13 +7,14 @@ return [
     'work-title'=>'Our WorkShop work',
     'workshop'=>'All The Work Done In Our WorkShop',
     'select'=>'Select Service',
-    'quote'=>'Make A Booking to get your Vehicle Fixed',
-    'name'=>'Enter name',
-    'email'=>'Enter email',
-    'mobile'=>'Enter mobile',
-    'message'=>'Enter your message',
+    'quote'=>'Make A Booking To Get Your Vehicle Fixed',
+    'name'=>'Enter Name',
+    'email'=>'Enter Email',
+    'mobile'=>'Enter Mobile',
+    'message'=>'Enter Your Message',
     'Submit'=>'Submit',
-    'CheckOut'=>'Check Out',
+    //
+    'CheckOut'=>'Make A Booking To Get Your Vehicle Fixed',
     'FullName'=>'Full Name',
     'MobileNumber'=>'Mobile Number',
     'EmailAddress'=>'Email Address',
@@ -29,14 +30,18 @@ return [
     'SelectBrand'=>'Select Brand',
     'qty'=>'quantity',
     //product title
-    'product-title'=>'purchese of spare parts',
+    'product-title'=>'Purchese of Spare Parts',
     'buy_now'=>'Buy Now',
+    'product-span'=>'Spare Parts Buy',
+    'spareTitle'=>'Spare Parts',
+    'SelectSpare'=>'Select Spare part',
 
     //top ber
     'AllVehicle'=>'All Vehicle Solution',
-    'Allvehicle_shor'=>'No MORE THINKING About CARS, WE ARE WHERE THE PROBLEM',
-    'Allvehicle_shor_span'=>'We get your Car Serviced by skilled technicians as per your Sehedule'
-
-
+    'Allvehicle_shor'=>'No More Thinking About Cars, We Are Where The Problem Is',
+    'Allvehicle_shor_span'=>'We Get Your Car Serviced By Skilled Technicians As Per, Your Sehedule',
+    'CarYear'=>'Car Year',
+    //service title checkout
+    'SelectService'=>'Select Your Car Work',
 
 ];

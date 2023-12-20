@@ -10,9 +10,7 @@ car
         <div class="row mt-5">
 
             <div class="col-lg-8">
-
                 <div class="rpb-shop-prevw">
-
                     <img src="{{ asset($details->thamble ) }}" class="w-100" alt="img">
                 </div>
                 <div class="priceoderbtn"><a href="{{ route('checkOut-index',$details->id) }}" class="niwax-btn3" style="padding: 0 16px !important; line-height: 33px !important;">Select Service</a></div>
@@ -24,7 +22,7 @@ car
 
                                 <h4 class="mb10">Description</h4>
 
-                                <p class="mb30">{!! $details->long_descrip  !!}</p>
+                                <p class="mb30"> {!! session()->get('locale')=='bn'?$details->long_descrip_bn:$details->long_descrip!!} </p>
 
                             </div>
 
@@ -38,7 +36,7 @@ car
 
                 <div class="rpb-item-infodv">
                  <strong>OVERVIEW</strong><br><br>
-                    {{$details->content_descrip   }}
+                    {{ session()->get('locale')=='bn'? $details->short_descrip_bn  :$details->content_descrip   }}
                 </div>
 
                 </div>

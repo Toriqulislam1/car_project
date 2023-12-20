@@ -36,6 +36,8 @@ class orderController extends Controller
     function checkStore(Request $request)
 
     {
+       
+
         $alldata = $request->all();
 
         $request->session()->put('test',   $alldata);
@@ -82,10 +84,10 @@ $admin = Admin::find(1);
                 'car_model' => $request->carModel,
                 'date' => $request->date,
                 'service_id' => $afterjson,
-
-                'template_name' => $request->templateName,
-                'template_number' => $request->templateNumber,
+                'car_year_num' => $request->car_year_number,
                 'Others' => $request->Others,
+                'spare_parts_name' => $request->spare_parts_name,
+                'spare_parts_item' => $request->display,
 
 
 

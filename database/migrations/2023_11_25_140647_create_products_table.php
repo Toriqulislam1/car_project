@@ -23,6 +23,15 @@ return new class extends Migration
             $table->string('details');
             $table->string('stock');
             $table->integer('status');
+
+            $table->string('title_bn');
+            $table->string('price_bn');
+            $table->string('stock_bn');
+            $table->string('discount_bn');
+            $table->integer('unit_bn');
+            $table->text('product_long_descrp_bn');
+
+
             $table->timestamps();
         });
     }

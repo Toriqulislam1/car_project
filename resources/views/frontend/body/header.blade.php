@@ -66,11 +66,12 @@ $setting = App\Models\setting::find(1);
                     <li><a href="{{ url('/') }}" class="menu-links">Home</a></li>
                     <li><a href="#services" class="menu-links">Services</a></li>
                     <li><a href="#work" class="menu-links">Work</a></li>
+                    <li><a href="#SpareParts" class="menu-links">Spare Parts</a></li>
 
 
                     @if(Auth::check())
                     <div class="dropdown">
-                        <button class="dropbtn">Dashboard</button>
+                        <button class="dropbtn" style="font-family: 'Poppins', sans-serif;">Dashboard</button>
                         <div class="dropdown-content">
                             <a class="dropdown-item" href="{{ route('user-profile-index') }}">Profile</a>
                             <a class="dropdown-item" href="{{ route('order-show-user-profile') }}">service Order</a>
@@ -87,7 +88,7 @@ $setting = App\Models\setting::find(1);
                       font-weight: 500;
                       padding: 0px 15px;
                       line-height: 85px;
-                      text-transform: uppercase;
+                      /* text-transform: uppercase; */
                       position: relative;
                       overflow: hidden;" href="{{ route('login-index') }}" class="menu-links">Login</a>
                       @endif
