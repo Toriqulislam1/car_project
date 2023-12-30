@@ -191,11 +191,25 @@ class productController extends Controller
                 'product_id' =>$request->product_id,
                 'user_id' => Auth::user()->id,
                 'order_number' => "#" . Auth::user()->id . rand(10, 9999),
-                'qty'=>$request->qty,
                 'extra_product_id' =>$afterjson,
 
+                'car_brand' => $request->carBrand,
+                'car_model' => $request->carModel,
+                'date' => $request->date,
+                'car_year_num' => $request->car_year_number,
+                'metro_name' => $request->metro,
+                'letter_name' =>  $request->letter,
+                'registration' => $request->registration,
+                'sparePart' => $request->spareParts,
+                'partPartial' => $request->partPartial,
+
+                'Others' => $request->Others,
+
+
+
+
             ]);
-            product::where('id', $request->product_id)->decrement('stock', $request->qty);
+            product::where('id', $request->product_id)->decrement('stock',1);
 
             return view('frontend.contact.success_page');
         }else{

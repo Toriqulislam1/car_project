@@ -73,22 +73,7 @@ color: #33ffd8;
         <div class="niwax23form shadow">
           <div class="common-heading text-l">
             <h2 class="mt0 mb0 text-center mb-5">@lang('lang.CheckOut')</h2>
-            {{-- <div class="fieldsets row">
-              @if(session('test'))
-              <div class="alert alert-danger">
-                <strong> {{(session('test')) }}</strong>
-              </div>
-              @endif
-            </div> --}}
-
-            {{-- <div>
-              @if(session('test'))
-              <h1>Session Data</h1>
-              <pre>{{ print_r(session('test'), true) }}</pre>
-              @else
-              <p>No session data available</p>
-              @endif
-            </div> --}}
+        
 
 
             @if(session('success'))
@@ -168,7 +153,7 @@ color: #33ffd8;
                         <input type="datetime-local" id="myID" placeholder=" data and time "
                           value="{{ session('test.date') }}" required="required" id="email" class="floating-input"
                           name="date">
-                        <label>@lang('lang.date')<span style="color: red">*</span></label>
+                        <label>@lang('lang.date')<span style="color: ">*</span></label>
                         @error('email')
                         <div>{{ $message }}</div>
                         @enderror
@@ -287,7 +272,7 @@ color: #33ffd8;
                         <input type="text" placeholder="" value="" id="name"
                           class="floating-input" name="registration">
 
-                        <label>Serial Number<span style="color: ">*</span></label>
+                        <label>Serial Number<span style="color: red">*</span></label>
                         @error('name')
                         <div>{{ $message }}</div>
                         @enderror

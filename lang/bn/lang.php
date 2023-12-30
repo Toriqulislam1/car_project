@@ -44,5 +44,6 @@ return [
     'spareTitle' => 'স্পেয়ার পার্টস',
     'SelectSpare' => 'স্পেয়ার পার্টস নির্বাচন করুন',
     'SelectService'=>'গাড়ির কাজ সমূহ',
+    'carRegistration' => 'গাড়ির রেজিস্ট্রেশন নাম্বার',
 
 ];

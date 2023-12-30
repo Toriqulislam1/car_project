@@ -29,6 +29,29 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <style>html { scroll-behavior: smooth;}</style>
+    <style>
+        .active {
+        color:#DD7A25 !important;
+    }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        // $(document).ready(function() {
+        //     var head = document.getElementsByClassName("navarea")[0];
+        //     var activeTab = head.getElementsByTagName("a");
+        //     for (var i = 0; i < activeTab.length; i++) {
+        //         $(activeTab[i]).click(function() {
+        //             var tab = document.getElementsByClassName("active");
+        //             tab[0].className = tab[0].className.replace("active", "");
+        //             this.className += "active";
+        //         });
+        //     }
+        // });
+
+    </script>
+
+
+
 
 
  </head>

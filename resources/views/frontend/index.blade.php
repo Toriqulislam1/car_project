@@ -131,11 +131,7 @@ $setting = App\Models\setting::find(1);
 </section>
 
 
-
-{{-- @php
-$portfolios = App\Models\Portfolio::all();
-@endphp --}}
-
+ {{-- work start --}}
 <section class="portfolio-page dark-bg4 bg-gradient6 pad-tb" id="work">
     <div class="container">
 
@@ -147,29 +143,6 @@ $portfolios = App\Models\Portfolio::all();
                 </div>
             </div>
         </div>
-
-        {{-- <div class="row card-list justify-content-center">
-            @foreach ($portfolios as $portfolio)
-
-
-            <div class="col-lg-4 col-md-6 grid-sizer"></div>
-
-            <div class="col-lg-4 col-sm-6 single-card-item app">
-                <div class="isotope_item hover-scale">
-                    <div class="item-image">
-                        <a href="#"><img src="{{ asset( $portfolio->port_image ) }}" alt="portfolio" class="img-fluid" /> </a>
-                    </div>
-                    <div class="item-info">
-                        <h4><a href="#">{{ $portfolio->port_title  }}</a></h4>
-                        <p>{{ $portfolio->port_subtitle }}</p>
-                    </div>
-                </div>
-            </div>
-
-
-            @endforeach
-
-        </div> --}}
 
         <div class="fieldsets row">
             @if(session('loginError'))
@@ -192,16 +165,16 @@ $portfolios = App\Models\Portfolio::all();
                             <h4><a href="{{ route('details-service-page',$item->id) }}"> {{ session()->get('locale')=='bn'?  $item->breadcrumb_title_bn:  $item->content_slide_title}}</a></h4>
                         </div>
 
-                        <div class="priceoderbtn"><a href="{{ route('checkOut-index',$item->id) }}" class="niwax-btn3" style="padding: 0 16px !important; line-height: 33px !important;">@lang('lang.select')</a></div>
+                        <div class="priceoderbtn"><a href="{{ route('checkOut-work-index',$item->id)}}" class="niwax-btn3" style="padding: 0 16px !important; line-height: 33px !important;">@lang('lang.select')</a></div>
                     </div>
                 </div>
                 @endforeach
             </div>
         </div>
+
     </div>
 </section>
-
-
+{{-- work start end --}}
 
 
 {{-- product start --}}
@@ -255,8 +228,6 @@ $portfolios = App\Models\Portfolio::all();
         </div>
     </div>
 </div>
-
-
 {{-- product end --}}
 
 

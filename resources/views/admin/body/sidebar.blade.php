@@ -25,6 +25,30 @@
           </a>
         </li>
 
+
+        <li class="treeview">
+            <a href="#">
+              <i data-feather="message-circle"></i>
+              <span>Invoice</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-right pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ route('adminInvoiceIndex')}}"><i class="ti-more"></i>Create</a></li>
+              {{-- <li><a href="{{ route('slide-manage')}}"><i class="ti-more"></i> Manage slide </a></li> --}}
+            </ul>
+          </li>
+
+
+
+
+
+
+
+
+
+
         <li class="treeview">
             <a href="#">
               <i data-feather="message-circle"></i>
@@ -80,6 +104,21 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="{{ route('all.category')}}"><i class="ti-more"></i>Create brand</a></li>
+            </ul>
+          </li>
+		<li class="treeview">
+            <a href="">
+              <i data-feather="server"></i>
+              <span>year, metro, cha,spare part, add </span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-right pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ route('year-view') }}"><i class="ti-more"></i>Create Year</a></li>
+              <li><a href="{{ route('metro-view') }}"><i class="ti-more"></i>Create Metro name</a></li>
+              <li><a href="{{ route('letter-view') }}"><i class="ti-more"></i>Create Letter name</a></li>
+              <li><a href="{{ route('spare-part-view') }}"><i class="ti-more"></i>Create spare parts</a></li>
             </ul>
           </li>
 

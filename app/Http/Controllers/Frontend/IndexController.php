@@ -39,7 +39,19 @@ function ProductDetailsPage($id){
 
 
 
+function serviceHeaderPage(){
 
+    return view('frontend.page.service');
+}
+function workHeaderPage(){
+
+    return view('frontend.page.work');
+}
+
+function sparePartHeaderPage(){
+
+    return view('frontend.page.sparePart');
+}
 
 
 

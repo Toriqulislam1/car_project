@@ -23,7 +23,20 @@ return new class extends Migration
             $table->string('location');
             $table->string('order_number');
             $table->string('extra_product_id');
-            $table->integer('qty');
+
+            $table->string('car_brand');
+            $table->string('car_model');
+            $table->string('date');
+            $table->string('car_year_num');
+            $table->string('metro_name');
+            $table->string('letter_name');
+            $table->string('registration');
+            $table->string('sparePart');
+            $table->string('partPartial');
+            $table->string('Others')->nullable();
+
+
+
             $table->string('status')->default('panding');
             $table->timestamps();
         });

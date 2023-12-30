@@ -28,7 +28,9 @@ return new class extends Migration
             $table->string('service_id');
             $table->string('car_year_num');
             $table->string('spare_parts_name');
-            $table->string('spare_parts_item');
+            $table->string('metro_name');
+            $table->string('letter_name');
+            $table->string('registration');
             $table->text('Others')->nullable();
             $table->string('status')->default('panding');
             $table->timestamps();

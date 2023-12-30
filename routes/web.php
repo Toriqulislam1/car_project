@@ -19,7 +19,9 @@ use App\Http\Controllers\Backend\PolicyController;
 use App\Http\Controllers\Backend\IndController;
 use App\Http\Controllers\Backend\basicsettingController;
 use App\Http\Controllers\Backend\slideController;
+use App\Http\Controllers\Backend\othersController;
 use App\Http\Controllers\Backend\productController;
+use App\Http\Controllers\Backend\adminInvoiceController;
 use App\Http\Controllers\Frontend\searchController;
 use App\Http\Controllers\Frontend\userLoginController;
 use App\Http\Controllers\Frontend\orderController;
@@ -59,6 +61,16 @@ $article->translations()->create([
 });
 
 
+///admin Invoice
+Route::prefix('admin')->group(function (){
+
+Route::get('/invoice',[adminInvoiceController::class, 'InvoiceIndex'])->name('adminInvoiceIndex');
+
+Route::post('/login/owner',[AdminController::class, 'Login'])->name('admin.login');
+
+
+
+});
 
 
 
@@ -133,11 +145,24 @@ Route::prefix('user')->group(function (){
 
 });
 
+//page index
+Route::prefix('page')->group(function (){
+    Route::get('/service', [IndexController::class, 'serviceHeaderPage'])->name('service-index-page');
+    Route::get('/work', [IndexController::class, 'workHeaderPage'])->name('work-index-page');
+    Route::get('/parts', [IndexController::class, 'sparePartHeaderPage'])->name('SpareParts-index-page');
+
+
+
+});
+
+
+
 
 //order service
 Route::prefix('order')->group(function (){
 
-    Route::get('/checkout/{product_id}',[orderController::class, 'checkOutIndex'])->name('checkOut-index');
+    Route::get('/checkout/service/{product_id}',[orderController::class, 'checkOutIndex'])->name('checkOut-index');
+    Route::get('/checkout/work/{product_id}',[orderController::class, 'checkOutWorkIndex'])->name('checkOut-work-index');
     Route::post('/checkout/store',[orderController::class, 'checkStore'])->name('checkout-store');
     Route::get('/all',[orderController::class, 'allOrder'])->name('order-show');
     Route::post('/status/update',[orderController::class, 'statusUpdate'])->name('status-update');
@@ -189,7 +214,6 @@ Route::prefix('product')->group(function(){
 
 
 });
-
 
 
 // Admin Category All Routes
@@ -309,6 +333,29 @@ Route::prefix('portfolio')->group(function(){
     Route::get('/active/{id}', [PortfolioController::class, 'PortfolioActive'])->name('portfolio.active');
 
     Route::get('/delete/{id}', [PortfolioController::class, 'PortfolioDelete'])->name('portfolio-delete');
+
+});
+
+// Admin Others All Routes
+
+Route::prefix('car')->group(function(){
+
+    Route::get('/year', [othersController::class, 'AddYear'])->name('year-view');
+    Route::post('/store', [othersController::class, 'StoreCarNum'])->name('carYear-store');
+    Route::get('/year/dele/{id}', [othersController::class, 'carYearDelete'])->name('carYear.delete');
+    //metro name route
+    Route::get('/metro', [othersController::class, 'AddMetro'])->name('metro-view');
+    Route::post('/metro/store', [othersController::class, 'StoreMetro'])->name('metro-store');
+    Route::get('/metro/dele/{id}', [othersController::class, 'metroDelete'])->name('metroDelete');
+    //letter name route
+    Route::get('/letter', [othersController::class, 'AddLetter'])->name('letter-view');
+    Route::post('/letter/store', [othersController::class, 'StoreLetter'])->name('letter-store');
+    Route::get('/letter/dele/{id}', [othersController::class, 'letterDelete'])->name('letterDelete');
+    //spare part name route
+    Route::get('/spare/part', [othersController::class, 'AddSparePart'])->name('spare-part-view');
+    Route::post('/spare/store', [othersController::class, 'StoreSparepart'])->name('sparepart-store');
+    Route::get('/spare/dele/{id}', [othersController::class, 'sparepartDelete'])->name('sparepart-Delete');
+
 
 });
 

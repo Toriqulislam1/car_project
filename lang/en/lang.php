@@ -35,6 +35,8 @@ return [
     'product-span'=>'Spare Parts Buy',
     'spareTitle'=>'Spare Parts',
     'SelectSpare'=>'Select Spare part',
+    'carRegistration'=>'Car Registration Number',
+
 
     //top ber
     'AllVehicle'=>'All Vehicle Solution',

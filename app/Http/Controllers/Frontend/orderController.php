@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Frontend;
+
 use App\Mail\OrderInvoice;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -21,22 +22,31 @@ class orderController extends Controller
     function checkOutIndex($product_id)
     {
 
-       $Ga = Gallery::all();
-            $services = Services::all();
+        $Ga = Gallery::all();
+        $services = Services::all();
         return view('frontend.order.checkout', [
             'product_id' => $product_id,
-            'services' =>$services,
-            'Ga' =>$Ga,
+            'services' => $services,
+            'Ga' => $Ga,
         ]);
+    } //end
 
+    function checkOutWorkIndex($product_id)
+    {
 
-
+        $Ga = Gallery::all();
+        $services = Services::all();
+        return view('frontend.workCheckout.checkout', [
+            'product_id' => $product_id,
+            'services' => $services,
+            'Ga' => $Ga,
+        ]);
     } //end
 
     function checkStore(Request $request)
 
     {
-       
+
 
         $alldata = $request->all();
 
@@ -47,20 +57,20 @@ class orderController extends Controller
 
         $services_id = $request->service;
 
-       $afterjson =json_encode($services_id);
+        $afterjson = json_encode($services_id);
 
-     // Store the product ID in the session
-$prod = $request->product_id;
-$request->session()->put('product_id', $prod);
+        // Store the product ID in the session
+        $prod = $request->product_id;
+        $request->session()->put('product_id', $prod);
 
-$product_id = session('product_id');
+        $product_id = session('product_id');
 
 
-$admin = Admin::find(1);
+        $admin = Admin::find(1);
 
- $adminNotify = $admin->email;
+        $adminNotify = $admin->email;
 
-        if(Auth::user()){
+        if (Auth::user()) {
 
             $request->validate([
                 'name' => 'required|max:255',
@@ -76,7 +86,7 @@ $admin = Admin::find(1);
                 'phone' => $request->phone,
                 'email' => $request->email,
                 'location' => $request->location,
-                'product_id' =>$product_id,
+                'product_id' => $product_id,
                 'user_id' => Auth::user()->id,
                 'order_num' => "#" . Auth::user()->id . rand(10, 9999),
 
@@ -85,9 +95,14 @@ $admin = Admin::find(1);
                 'date' => $request->date,
                 'service_id' => $afterjson,
                 'car_year_num' => $request->car_year_number,
+
+                'metro_name' => $request->metro,
+                'letter_name' =>  $request->letter,
+                'registration' => $request->registration,
+
                 'Others' => $request->Others,
                 'spare_parts_name' => $request->spare_parts_name,
-                'spare_parts_item' => $request->display,
+
 
 
 
@@ -97,27 +112,21 @@ $admin = Admin::find(1);
 
             Mail::send('frontend.auth.invoiceEmail', compact('dataid'), function ($message) use ($dataid, $pdf, $request) {
                 $message->to($request->email)
-                        ->subject('order invoice')
-                        ->attachData($pdf->output(), "invoice.pdf");
+                    ->subject('order invoice')
+                    ->attachData($pdf->output(), "invoice.pdf");
             });
 
             Mail::send('frontend.auth.invoiceEmail', compact('dataid'), function ($message) use ($dataid, $pdf, $adminNotify, $request) {
                 $message->to($adminNotify)
-                        ->subject('order invoice')
-                        ->attachData($pdf->output(), "invoice.pdf");
+                    ->subject('order invoice')
+                    ->attachData($pdf->output(), "invoice.pdf");
             });
 
             $request->session()->forget('test');
             return view('frontend.contact.success_page');
-
-
-
-        }else{
+        } else {
             return redirect()->route('login-index');
         }
-
-
-
     } //end
 
     function allOrder()
@@ -157,98 +166,99 @@ $admin = Admin::find(1);
         return $pdf->stream('invoice-pdf');
     } //end
 
-    function paymentOrder(){
+    function paymentOrder()
+    {
 
         $orders = order::all();
 
-        return view('admin.order.payment',['orders'=>$orders]);
-    }//end
+        return view('admin.order.payment', ['orders' => $orders]);
+    } //end
 
-    function paymentInvoiceIndex($id){
+    function paymentInvoiceIndex($id)
+    {
         $order_details = order::find($id);
 
-        return view('admin.order.payInvoice',['order_details'=>$order_details]);
-    }//end
+        return view('admin.order.payInvoice', ['order_details' => $order_details]);
+    } //end
 
-    function paymentInvoiceStore(Request $request){
+    function paymentInvoiceStore(Request $request)
+    {
 
 
-             payment::insertGetId([
+        payment::insertGetId([
             'name' => $request->name,
             'phone' => $request->phone,
             'email' => $request->email,
             'order_id' => $request->order_id,
-            'user_id' =>$request->user_id,
-            'price' =>$request->price,
+            'user_id' => $request->user_id,
+            'price' => $request->price,
             'discount' => $request->discount,
             'servics_details' => $request->service_descrip,
 
         ]);
 
         return back();
+    } //end
 
 
-    }//end
-
-
-    function InvoiceDownload($id){
+    function InvoiceDownload($id)
+    {
 
         $service = payment::find($id);
 
-        $pdf = Pdf::loadView('admin.order.pay.invoice', ['service'=>$service])->setOptions(['defaultFont' => 'sans-serif']);
+        $pdf = Pdf::loadView('admin.order.pay.invoice', ['service' => $service])->setOptions(['defaultFont' => 'sans-serif']);
         return $pdf->stream('invoice-pdf');
+    } //end
 
-    }//end
-
-    function InvoiceAdminDelete($id){
+    function InvoiceAdminDelete($id)
+    {
         payment::findOrFail($id)->delete();
 
-    	$notification = array(
-			'message' => 'invoice Deleted Successfully',
-			'alert-type' => 'success'
-		);
+        $notification = array(
+            'message' => 'invoice Deleted Successfully',
+            'alert-type' => 'success'
+        );
 
-		return redirect()->back()->with($notification);
+        return redirect()->back()->with($notification);
+    } //end
+
+    function userPayment()
+    {
+
+        $service = payment::where('user_id', Auth::user()->id)->get();
+
+        return view('frontend.auth.payment', ['service' => $service]);
+    } //end
+
+    function userPaymentDownload($id)
+    {
+
+        $service = payment::find($id);
+
+        $pdf = Pdf::loadView('frontend.auth.userPayment.paymentInvoice', ['service' => $service])->setOptions(['defaultFont' => 'sans-serif']);
+        return $pdf->stream('invoice-pdf');
+    } //end
+
+    // admin product order
+
+    function ProductOrderIndex()
+    {
+
+        $products = productOrder::all();
+
+        return view('admin.product.order.index', ['products' => $products]);
+    } //end
+
+    function ProductOrderInvoice($id)
+    {
+
+        $products = productOrder::find($id);
+        $pdf = Pdf::loadView('frontend.auth.product.invoice', ['products' => $products])->setOptions(['defaultFont' => 'sans-serif']);
+        return $pdf->stream('invoice-pdf');
+    } //end
 
 
-    }//end
-
-    function userPayment(){
-
-        $service = payment::where('user_id',Auth::user()->id)->get();
-
-        return view('frontend.auth.payment',['service'=>$service]);
-    }//end
-
-function userPaymentDownload($id){
-
-    $service = payment::find($id);
-
-    $pdf = Pdf::loadView('frontend.auth.userPayment.paymentInvoice', ['service'=>$service])->setOptions(['defaultFont' => 'sans-serif']);
-    return $pdf->stream('invoice-pdf');
-
-}//end
-
-// admin product order
-
-function ProductOrderIndex(){
-
-    $products = productOrder::all();
-
-    return view('admin.product.order.index',['products'=>$products]);
-}//end
-
-function ProductOrderInvoice($id){
-
-    $products = productOrder::find($id);
-    $pdf = Pdf::loadView('frontend.auth.product.invoice', ['products'=>$products])->setOptions(['defaultFont' => 'sans-serif']);
-    return $pdf->stream('invoice-pdf');
-
-
-}//end
-
-
-function ProductstatusUpdate(Request $request)
+    function ProductstatusUpdate(Request $request)
     {
         $id = $request->id;
 
