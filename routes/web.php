@@ -67,6 +67,8 @@ Route::prefix('admin')->group(function (){
 Route::get('/invoice',[adminInvoiceController::class, 'InvoiceIndex'])->name('adminInvoiceIndex');
 
 Route::post('/invoice/store',[adminInvoiceController::class, 'StoreInvoice'])->name('invoice-store-admin');
+//search registration by ajax
+Route::post('/registration/search',[adminInvoiceController::class, 'Search'])->name('search-registration');
 
 
 

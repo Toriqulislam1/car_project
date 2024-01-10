@@ -8,8 +8,12 @@ use App\Models\adminInvoicePart;
 use App\Models\letter;
 use App\Models\adminInvoiceService;
 use App\Models\admininvoice;
+use App\Models\order;
 use Carbon\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Exception;
+use Illuminate\Support\Facades\DB;
+
 class adminInvoiceController extends Controller
 {
     public function InvoiceIndex()
@@ -75,6 +79,30 @@ class adminInvoiceController extends Controller
 
 
 
+    }//end
+
+
+
+    public function Search(Request $request)
+    {
+        // dd($request->all());
+
+        try{
+            DB::beginTransaction();
+            $registration_no = $request->search;
+            if(empty($registration_no)){
+                throw new Exception("Please provide a valid regitration number!");
+            }
+            $data = order::where('registration', $registration_no)->first();
+            if(empty($data)){
+                throw new Exception("Your provided regitration number $registration_no are not valid!");
+            }
+            DB::commit();
+            return response()->json($data);
+        }catch(\Exception $e){
+            DB::rollback();
+            return response()->json($e->getMessage());
+        }
     }//end
 
 
