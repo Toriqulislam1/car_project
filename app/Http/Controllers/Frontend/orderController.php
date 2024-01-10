@@ -101,7 +101,7 @@ class orderController extends Controller
                 'registration' => $request->registration,
 
                 'Others' => $request->Others,
-                'spare_parts_name' => $request->spare_parts_name,
+                
 
 
 

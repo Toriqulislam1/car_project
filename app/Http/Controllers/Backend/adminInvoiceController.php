@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\caryear;
+use App\Models\adminInvoicePart;
 use App\Models\letter;
-use App\Models\metro;
-use App\Models\sparePart;
+use App\Models\adminInvoiceService;
+use App\Models\admininvoice;
 use Carbon\Carbon;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 class adminInvoiceController extends Controller
 {
     public function InvoiceIndex()
@@ -17,178 +17,71 @@ class adminInvoiceController extends Controller
 
 
         return view('admin.invoice.invoiceIndex');
-    }
+    }//end
 
-    public function StoreCarNum(Request $request)
-    {
 
+    public function StoreInvoice(Request $request){
 
-        caryear::insert([
-            'carYearNum' => $request->carYear,
-            'created_at' => Carbon::now(),
+       $invoice_id = admininvoice::insert([
+            'name' => $request->name,
+            'address' => $request->address,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'caryear' => $request->caryear,
+            'engine' => $request->engine,
+            'model' => $request->model,
+            'brand' => $request->brand,
+            'registration' => $request->registration,
+            'km' => $request->km,
+            'chassis' => $request->chassis,
+            'serviceCost' => $request->serviceCost,
+            'partCost' => $request->partCost,
 
+            ]);
 
-        ]);
 
 
-        $notification = array(
-            'message' => 'Number Inserted Successfully',
-            'alert-type' => 'success'
-        );
 
-        return redirect()->back()->with($notification);
-    } ///end method
 
+            foreach ($request->addmore as $key => $item) {
 
-    public function carYearDelete($id)
-    {
+                adminInvoiceService::insert([
+                    'invoice_id' => $invoice_id,
+                    'service' => $item['service'],
+                    'qty' => $item['qty'],
+                    'rate' => $item['rate'],
+                    'amount' =>$item['amount'],
 
+                ]);
 
-        caryear::findOrFail($id)->delete();
+           }
 
+            foreach ($request->addpart as $key => $item) {
 
 
-        $notification = array(
-            'message' => 'Year Deleted Successfully',
-            'alert-type' => 'success'
-        );
 
-        return redirect()->back()->with($notification);
-    } // end method
+                foreach ($request->addpart as $key => $item) {
+                    adminInvoicePart::insert([
+                        'invoice_id' => $invoice_id,
+                        'part' => $item['part'],
+                        'qty' => isset($item['qty1']) ? $item['qty1'] : null,
+                        'rate' => $item['rate'],
+                        'amount' => $item['amount'],
+                    ]);
+                }
 
-    public function AddMetro()
-    {
 
-        $metros = metro::all();
+           }
 
-        return view('admin.metro.add_metro', compact('metros'));
-    }
 
-    public function StoreMetro(Request $request)
-    {
 
+           $invoice_info = admininvoice::find($invoice_id);
+           $pdf = Pdf::loadView('admin.invoice.pdf', ['invoice_info' => $invoice_info,])->setOptions(['defaultFont' => 'sans-serif']);
+           return $pdf->stream('invoice-pdf');
 
-        metro::insert([
-            'metro_name' => $request->metro_name,
-            'created_at' => Carbon::now(),
 
 
-        ]);
-
-
-        $notification = array(
-            'message' => 'Metro Inserted Successfully',
-            'alert-type' => 'success'
-        );
-
-        return redirect()->back()->with($notification);
-    } ///end method
-
-
-    public function metroDelete($id)
-    {
-
-
-        metro::findOrFail($id)->delete();
-
-
-
-        $notification = array(
-            'message' => 'metro Deleted Successfully',
-            'alert-type' => 'success'
-        );
-
-        return redirect()->back()->with($notification);
-    } // end method
-    public function AddLetter()
-    {
-
-        $letters = letter::all();
-
-        return view('admin.letter.add_letter', compact('letters'));
-    }
-
-    public function StoreLetter(Request $request)
-    {
-
-
-        letter::insert([
-            'letter_name' => $request->letter_name,
-            'created_at' => Carbon::now(),
-
-
-        ]);
-
-
-        $notification = array(
-            'message' => 'Letter Inserted Successfully',
-            'alert-type' => 'success'
-        );
-
-        return redirect()->back()->with($notification);
-    } ///end method
-
-
-    public function letterDelete($id)
-    {
-
-
-        letter::findOrFail($id)->delete();
-
-
-
-        $notification = array(
-            'message' => 'letter Deleted Successfully',
-            'alert-type' => 'success'
-        );
-
-        return redirect()->back()->with($notification);
-    } // end method
-    public function AddSparePart()
-    {
-
-        $spareParts = sparePart::all();
-
-        return view('admin.sparePart.add_sparePart', compact('spareParts'));
-    }
-
-    public function StoreSparepart(Request $request)
-    {
-
-
-        sparePart::insert([
-            'sparepart_name' => $request->sparepart_name,
-            'created_at' => Carbon::now(),
-
-
-        ]);
-
-
-        $notification = array(
-            'message' => 'spare part Inserted Successfully',
-            'alert-type' => 'success'
-        );
-
-        return redirect()->back()->with($notification);
-    } ///end method
-
-
-    public function sparepartDelete($id)
-    {
-
-
-        sparePart::findOrFail($id)->delete();
-
-
-
-        $notification = array(
-            'message' => 'spare part Deleted Successfully',
-            'alert-type' => 'success'
-        );
-
-        return redirect()->back()->with($notification);
-    } // end method
-
+    }//end
 
 
 }

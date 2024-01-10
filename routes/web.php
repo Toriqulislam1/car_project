@@ -66,7 +66,7 @@ Route::prefix('admin')->group(function (){
 
 Route::get('/invoice',[adminInvoiceController::class, 'InvoiceIndex'])->name('adminInvoiceIndex');
 
-Route::post('/login/owner',[AdminController::class, 'Login'])->name('admin.login');
+Route::post('/invoice/store',[adminInvoiceController::class, 'StoreInvoice'])->name('invoice-store-admin');
 
 
 

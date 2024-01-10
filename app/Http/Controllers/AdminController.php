@@ -21,7 +21,7 @@ class AdminController extends Controller
         $check = $request->all();
         if(Auth::guard('admin')->attempt(['email' =>$check['email'], 'password' =>$check['password'] ])){
             return redirect()->route('admin.dashboard')->with('error','Admin Login success');
-        
+
         } else{
             return back()->with('error','Invalid Email or Password');
         }
@@ -32,4 +32,24 @@ class AdminController extends Controller
         return redirect()->route('login_form')->with('error','Admin logout Success');
 
     }//end
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+

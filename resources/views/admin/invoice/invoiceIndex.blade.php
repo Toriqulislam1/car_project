@@ -1,7 +1,6 @@
 @extends('admin.admin_master')
 @section('admin')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <div class="container-full">
     <!-- Content Header (Page header) -->
     <!-- Main content -->
@@ -9,226 +8,335 @@
         <!-- Basic Forms -->
         <div class="box">
             <div class="box-header with-border">
-                <h4 class="box-title">Add Invoice</h4>
+                <h4 class="box-title">Add Invoice </h4>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
                 <div class="row">
                     <div class="col">
-                        <form method="POST" action="{{ route('content-store') }}" enctype="multipart/form-data">
-                            @csrf
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="row">
-                                        <!-- start 2nd row  -->
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <h5>Breadcrumb Header <span class="text-danger">*</span></h5>
-                                                <div class="controls">
-                                                    <input type="text" name="content_slide_title" class="form-control" required="">
-                                                    @error('content_slide_title')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                        </div> <!-- end col md 6 -->
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <h5>Breadcrumb Banner <span class="text-danger">*</span></h5>
-                                                <div class="controls">
-                                                    <input type="file" name="breadcrumb" class="form-control" onChange="mainThamUrl(this)" required="">
-                                                    @error('breadcrumb')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                    <img src="" id="mainThmb">
-                                                </div>
-                                            </div>
-                                        </div> <!-- end col md 6 -->
-                                    </div> <!-- end 2nd row  -->
-                                    <div class="row">
-                                        <!-- start 3rd row  -->
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <h5>Service Title <span class="text-danger">*</span></h5>
-                                                <div class="controls">
-                                                    <input type="text" name="content_title" class="form-control" required="">
-                                                    @error('content_title')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
-                                            </div>
 
-                                        </div> <!-- end col md 6 -->
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <h5>Short Description <span class="text-danger">*</span></h5>
-                                                <div class="controls">
-                                                    <textarea name="content_descrip" id="textarea" class="form-control" required placeholder="Textarea text"></textarea>
-                                                </div>
-                                            </div>
-                                        </div> <!-- end col md 4 -->
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <h5>Service Thumbnail Image <span class="text-danger">*</span></h5>
-                                                <div class="controls">
-                                                    <input type="file" name="thamble" class="form-control" required="">
-                                                    @error('thamble')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                    <img src="">
-                                                </div>
-                                            </div>
-                                        </div> <!-- end col md 6 -->
-                                    </div> <!-- end 3rd row  -->
-                                    <div class="row">
-                                        <!-- start 3rd row  -->
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <h5>Long Description <span class="text-danger">*</span></h5>
-                                                <div class="controls">
-                                                    <textarea id="editor1" name="long_descrip" rows="10" cols="80">
-		                                            Long Description
-						                            </textarea>
-                                                </div>
-                                            </div>
-                                        </div> <!-- end col md 12 -->
 
-                                    </div> <!-- end 3rd row  -->
-                                    {{-- bangla version start --}}
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="row">
-                                                <!-- start 2nd row  -->
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <h5>Breadcrumb Header Bn <span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                            <input type="text" name="breadcrumb_title_bn" class="form-control" required="">
-                                                            @error('content_slide_title')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                            @enderror
-                                                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <form method="POST" action="{{ route('invoice-store-admin') }}">
+                                    @csrf
+                                <div class="row">
+                                    <!-- start 2nd row  -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <h5>Name: <span class="text-danger">*</span></h5>
+                                            <div class="controls">
+                                                <input type="text" name="name" class="form-control" required="">
+                                                @error('content_slide_title')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div> <!-- end col md 6 -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <h5>Address: <span class="text-danger">*</span></h5>
+                                            <div class="controls">
+                                                <input type="text" name="address" class="form-control" onChange="mainThamUrl(this)" required="">
+                                                @error('breadcrumb')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                                <img src="" id="mainThmb">
+                                            </div>
+                                        </div>
+                                    </div> <!-- end col md 6 -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <h5>Email Address: <span class="text-danger">*</span></h5>
+                                            <div class="controls">
+                                                <input type="text" name="email" class="form-control" onChange="mainThamUrl(this)" required="">
+                                                @error('breadcrumb')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                                <img src="" id="mainThmb">
+                                            </div>
+                                        </div>
+                                    </div> <!-- end col md 6 -->
+                                </div> <!-- end 2nd row  -->
+
+                                <div class="row">
+                                    <!-- start 3rd row  -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <h5>Phone No: <span class="text-danger">*</span></h5>
+                                            <div class="controls">
+                                                <input type="text" name="phone" class="form-control" required="">
+                                                @error('content_title')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                    </div> <!-- end col md 6 -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <h5> Car Year : <span class="text-danger">*</span></h5>
+                                            <div class="controls">
+                                                <input type="text" name="caryear" class="form-control" required="">
+                                                @error('content_title')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div> <!-- end col md 4 -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <h5>Engine. No:
+                                                <span class="text-danger">*</span>
+                                            </h5>
+                                            <div class="controls">
+                                                <input type="text" name="engine" class="form-control" required="">
+                                                @error('thamble')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                                <img src="">
+                                            </div>
+                                        </div>
+                                    </div> <!-- end col md 6 -->
+                                </div> <!-- end 3rd row  -->
+                                <div class="row">
+                                    <!-- start 3rd row  -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <h5>Model<span class="text-danger">*</span></h5>
+                                            <div class="controls">
+                                                <input type="text" name="model" class="form-control" required="">
+                                                @error('content_title')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                    </div> <!-- end col md 6 -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <h5>Brand  <span class="text-danger">*</span></h5>
+                                            <div class="controls">
+                                                <input type="text" name="brand" class="form-control" required="">
+                                                @error('content_title')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div> <!-- end col md 4 -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <h5>Reg No:
+                                                <span class="text-danger">*</span>
+                                            </h5>
+                                            <div class="controls">
+                                                <input type="text" name="registration" class="form-control" required="">
+                                                @error('thamble')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                                <img src="">
+                                            </div>
+                                        </div>
+                                    </div> <!-- end col md 6 -->
+                                </div> <!-- end 3rd row  -->
+
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <!-- start 2nd row  -->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <h5>K.M
+                                                        <span class="text-danger">*</span>
+                                                    </h5>
+                                                    <div class="controls">
+                                                        <input type="text" name="km" class="form-control" required="">
+                                                        @error('content_slide_title')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
                                                     </div>
-                                                </div> <!-- end col md 6 -->
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <h5>Service Title Bn <span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                            <input type="text" name="service_title_bn" class="form-control" required="">
-                                                            @error('content_title')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                </div> <!-- end col md 6 -->
-                                            </div> <!-- end 2nd row  -->
-                                            <div class="row">
-                                                <!-- start 3rd row  -->
-
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <h5>Short Description Bn<span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                            <textarea name="short_descrip_bn" id="textarea" class="form-control" required placeholder="Textarea text"></textarea>
-                                                        </div>
-                                                    </div>
-                                                </div> <!-- end col md 6 -->
-                                            </div> <!-- end 3rd row  -->
-
-                                            <div class="row">
-                                                <!-- start 3rd row  -->
-                                                <div class="col-md-12">
-
-                                                    <div class="form-group">
-                                                        <h5>Long Description Bn <span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                            <textarea id="editor2" name="long_descrip_bn" rows="10" cols="80">
-                                                                Long Description bn
-                                                            </textarea>
-                                                        </div>
-                                                    </div>
-                                                </div> <!-- end col md 12 -->
-                                            </div> <!-- end 3rd row  -->
-
-                                            {{-- bangla version end --}}
-                                            <hr>
-                                            <div class="row">
-                                                <div class="text-lg-center">
-                                                    <input type="submit" class="btn btn-primary  " value="Add Service">
                                                 </div>
-                        </form>
+                                            </div> <!-- end col md 6 -->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <h5>Chassis No:
+                                                        <span class="text-danger">*</span></h5>
+                                                    <div class="controls">
+                                                        <input type="text" name="chassis" class="form-control" required="">
+                                                        @error('content_title')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                            </div> <!-- end col md 6 -->
+                                        </div> <!-- end 2nd row  -->
 
-                    </div>
-                    <!-- /.col -->
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.box-body -->
-        </div>
-        <!-- /.box -->
+
+
+
+                                        <table id="dynamicTable">
+
+                                            <tr>
+
+
+
+                                                <th>Service Charge</th>
+
+                                                <th>Quantity </th>
+
+                                                <th>Rate</th>
+                                                <th>Amount</th>
+                                                <th>Action</th>
+
+                                            </tr>
+
+                                            <tr>
+
+                                                <td><input type="text" name="addmore[0][service]" placeholder="Enter your Service" class="form-control" /></td>
+
+                                                <td><input type="text" name="addmore[0][qty]" placeholder="Enter your Qty" class="form-control" /></td>
+
+                                                <td><input type="text" name="addmore[0][rate]" placeholder="Enter your Rate" class="form-control" /></td>
+                                                <td><input type="text" name="addmore[0][amount]" placeholder="Enter your Amount" class="form-control" /></td>
+
+                                                <td><button type="button" name="add" id="add">Add More</button></td>
+
+
+                                            </tr>
+
+                                        </table>
+
+
+                                        <table id="dynamicTable2">
+
+                                            <tr>
+
+                                                <th>Spare Part's</th>
+
+                                                <th>Quantity</th>
+
+                                                <th>Rate</th>
+                                                <th>Amount</th>
+
+                                                <th>Action</th>
+
+                                            </tr>
+
+                                            <tr>
+
+                                                <td><input type="text" name="addpart[0][part]" placeholder="Enter your Spare Part's" class="form-control" /></td>
+
+                                                <td><input type="text" name="addpart[0][qty1]" placeholder="Enter your Qty" class="form-control" /></td>
+
+                                                <td><input type="text" name="addpart[0][rate]" placeholder="Enter your Rate" class="form-control" /></td>
+                                                <td><input type="text" name="addpart[0][amount]" placeholder="Enter your Amount" class="form-control" /></td>
+
+                                                <td><button type="button" name="add" id="addSpare">Add More</button></td>
+
+
+                                            </tr>
+
+                                        </table>
+
+
+
+                                        <div class="row">
+                                            <!-- start 3rd row  -->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <h5>Service cost<span class="text-danger">*</span></h5>
+                                                    <div class="controls">
+                                                        <input type="text" name="serviceCost" class="form-control" required="">
+                                                        @error('content_title')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                            </div> <!-- end col md 6 -->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <h5>parts cost <span class="text-danger">*</span></h5>
+                                                    <div class="controls">
+                                                        <input type="text" name="partCost" class="form-control" required="">
+                                                        @error('content_title')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                            </div> <!-- end col md 4 -->
+
+                                        </div> <!-- end 3rd row  -->
+
+                                        <hr>
+                                        <div class="row">
+                                            <div class="text-lg-center">
+                                                <input type="submit" class="btn btn-primary  " value="Add Invoice">
+
+                                            </form>
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                        <!-- /.row -->
+                                    </div>
+                                    <!-- /.box-body -->
+                                </div>
+                                <!-- /.box -->
 
     </section>
     <!-- /.content -->
 </div>
 
+
+
+
+
+
+{{-- service section --}}
+
+
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('select[name="category_id"]').on('change', function() {
-            var category_id = $(this).val();
-            if (category_id) {
-                $.ajax({
-                    url: "{{  url('/category/subcategory/ajax') }}/" + category_id
-                    , type: "GET"
-                    , dataType: "json"
-                    , success: function(data) {
-                        $('select[name="childcategory_id"]').html('');
-                        var d = $('select[name="subcategory_id"]').empty();
-                        $.each(data, function(key, value) {
-                            $('select[name="subcategory_id"]').append('<option value="' + value.id + '">' + value.subcategory_name + '</option>');
-                        });
-                    }
-                , });
-            } else {
-                alert('danger');
-            }
-        });
-        $('select[name="subcategory_id"]').on('change', function() {
-            var subcategory_id = $(this).val();
-            if (subcategory_id) {
-                $.ajax({
-                    url: "{{  url('/category/childcategory/ajax') }}/" + subcategory_id
-                    , type: "GET"
-                    , dataType: "json"
-                    , success: function(data) {
-                        var d = $('select[name="childcategory_id"]').empty();
-                        $.each(data, function(key, value) {
-                            $('select[name="childcategory_id"]').append('<option value="' + value.id + '">' + value.childcategory_name + '</option>');
-                        });
-                    }
-                , });
-            } else {
-                alert('danger');
-            }
-        });
+    var i = 0;
+
+    $("#add").click(function() {
+
+        ++i;
+
+        $("#dynamicTable").append('<tr><td><input type="text" name="addmore[' + i + '][service]" placeholder="Enter your service" class="form-control" /></td><td><input type="text" name="addmore[' + i + '][qty]" placeholder="Enter your Qty" class="form-control" /></td><td><input type="text" name="addmore[' + i + '][rate]" placeholder="Enter your rate" class="form-control" /></td><td><input type="text" name="addmore[' + i + '][amount]" placeholder="Enter your amount" class="form-control" /></td><td><button class="remove-tr" type="button" >Remove</button></td></tr>');
+
+    });
+
+    $(document).on('click', '.remove-tr', function() {
+
+        $(this).parents('tr').remove();
+
+    });
+
+</script>
+
+{{-- spare parts --}}
+<script type="text/javascript">
+    var i = 0;
+
+    $("#addSpare").click(function() {
+
+        ++i;
+
+        $("#dynamicTable2").append('<tr><td><input type="text" name="addpart[' + i + '][part]" placeholder="Enter your parts" class="form-control" /></td><td><input type="text" name="addpart[' + i + '][qty1]" placeholder="Enter your Qty" class="form-control" /></td><td><input type="text" name="addpart[' + i + '][rate]" placeholder="Enter your rate" class="form-control" /></td><td><input type="text" name="addpart[' + i + '][amount]" placeholder="Enter your amount" class="form-control" /></td><td><button class="remove-tr" type="button" >Remove</button></td></tr>');
+
+    });
+
+    $(document).on('click', '.remove-tr', function() {
+
+        $(this).parents('tr').remove();
 
     });
 
 </script>
 
 
-<script type="text/javascript">
-    function mainThamUrl(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#mainThmb').attr('src', e.target.result).width(80).height(80);
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-</script>
-
-
 
 @endsection
+
