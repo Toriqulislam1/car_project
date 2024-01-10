@@ -22,7 +22,7 @@ class adminInvoiceController extends Controller
 
     public function StoreInvoice(Request $request){
 
-       $invoice_id = admininvoice::insert([
+       $invoice_id = admininvoice::insertGetId([
             'name' => $request->name,
             'address' => $request->address,
             'email' => $request->email,
@@ -56,10 +56,7 @@ class adminInvoiceController extends Controller
 
            }
 
-            foreach ($request->addpart as $key => $item) {
-
-
-
+           
                 foreach ($request->addpart as $key => $item) {
                     adminInvoicePart::insert([
                         'invoice_id' => $invoice_id,
@@ -69,10 +66,6 @@ class adminInvoiceController extends Controller
                         'amount' => $item['amount'],
                     ]);
                 }
-
-
-           }
-
 
 
            $invoice_info = admininvoice::find($invoice_id);
