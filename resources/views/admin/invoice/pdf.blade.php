@@ -321,7 +321,7 @@
                     <div class="invoice-single-details">
 
                         <ul class="details-list">
-                            {{--  <li class="list">order: <a href="#"></a>{{ $invoice_info->order_num }} </li>  --}}
+                            {{-- <li class="list">order: <a href="#"></a>{{ $invoice_info->order_num }} </li> --}}
                         </ul>
                     </div>
                     <div class="invoice-single-details" style="float:right;margin-top:-120px;">
@@ -334,6 +334,30 @@
                         </ul>
                     </div>
                 </div>
+            </div>
+            <div class="item-description">
+                <table class="custom--table">
+                    <tbody>
+                        <tr>
+                            <td>name: {{$invoice_info->name }}</td>
+                            <td>address:{{ $invoice_info->address }}</td>
+                            <td>email:{{$invoice_info->email }}</td>
+                            <td>phone:{{ $invoice_info->phone}}</td>
+                        </tr>
+                        <tr>
+                            <td> year:{{$invoice_info->caryear }}</td>
+                            <td>engine:{{ $invoice_info->engine }}</td>
+                            <td>model:{{$invoice_info->model }}</td>
+                            <td>brand:{{ $invoice_info->brand}}</td>
+                        </tr>
+                        <tr>
+                            <td>registration:{{$invoice_info->registration }}</td>
+                            <td>K.M{{ $invoice_info->km }}</td>
+                            <td>chassis:{{$invoice_info->chassis }}</td>
+
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
             <div class="item-description">
@@ -361,10 +385,10 @@
                         </tr>
                         @endforeach
 
-                       @php
-                      $serviceTotal = $services->pluck('amount')->sum()
-                       @endphp 
-                            <h5 class="">{{ __('Totall TK:') }}{{ $serviceTotal }}</h5>
+                        @php
+                        $serviceTotal = $services->pluck('amount')->sum()
+                        @endphp
+                        <h5 class="">{{ __('Totall TK:') }}{{ $serviceTotal }}</h5>
                     </tbody>
                 </table>
             </div>
@@ -399,10 +423,10 @@
 
                             @php
                             $sparepartsTotal = $spareparts->pluck('amount')->sum()
-                             @endphp 
-      
-                                  <h5 class="">{{ __('Totall TK:') }}{{ $sparepartsTotal }}</h5>
-                            <h6>{{ __('Totall TK') }}</h6>
+                            @endphp
+
+                            <h5 class="">{{ __('Totall TK:') }}{{ $sparepartsTotal }}</h5>
+
 
                         </tbody>
                     </table>
@@ -417,7 +441,7 @@
                                 <td>{{ $sparepartsTotal }}</td>
                             </tr>
                             <tr>
-                                <td>spare  total</td>
+                                <td>spare total</td>
                                 <td>{{ $sparepartsTotal }}</td>
                             </tr>
                             <h5>{{ __('service and spare sub Totall TK') }} {{$serviceTotal+$sparepartsTotal }}</h5>

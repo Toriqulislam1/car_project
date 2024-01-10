@@ -36,7 +36,7 @@ class adminInvoiceController extends Controller
             'chassis' => $request->chassis,
             'serviceCost' => $request->serviceCost,
             'partCost' => $request->partCost,
-
+            'created_at' => Carbon::now(),
             ]);
 
 
@@ -51,12 +51,12 @@ class adminInvoiceController extends Controller
                     'qty' => $item['qty'],
                     'rate' => $item['rate'],
                     'amount' =>$item['amount'],
-
+                    'created_at' => Carbon::now(),
                 ]);
 
            }
 
-           
+
                 foreach ($request->addpart as $key => $item) {
                     adminInvoicePart::insert([
                         'invoice_id' => $invoice_id,
@@ -64,6 +64,7 @@ class adminInvoiceController extends Controller
                         'qty' => isset($item['qty1']) ? $item['qty1'] : null,
                         'rate' => $item['rate'],
                         'amount' => $item['amount'],
+                        'created_at' => Carbon::now(),
                     ]);
                 }
 
