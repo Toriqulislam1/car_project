@@ -176,6 +176,7 @@ class productController extends Controller
     }
 
     function productCheckOutStore(Request $request){
+
         $products_id = $request->product;
 
         $afterjson =json_encode($products_id);
@@ -200,13 +201,10 @@ class productController extends Controller
                 'metro_name' => $request->metro,
                 'letter_name' =>  $request->letter,
                 'registration' => $request->registration,
-                'sparePart' => $request->spareParts,
-                'partPartial' => $request->partPartial,
+                'sparePart' => json_encode($request->spareParts),
+                'partPartial' => json_encode($request->partPartial),
 
                 'Others' => $request->Others,
-
-
-
 
             ]);
             product::where('id', $request->product_id)->decrement('stock',1);

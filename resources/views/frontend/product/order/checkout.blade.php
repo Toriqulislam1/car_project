@@ -197,8 +197,8 @@ check out
 
                                     <div class="form-group col-sm-3">
 
-                                        <select name="spareParts" id="Dtype3" required>
-
+                                        <select name="spareParts[]" id="Dtype3" required>
+                                            <option value="" selected>Select</option>
                                             @foreach ( $spareParts as $item)
                                             <option value="{{ $item->sparepart_name  }}">
                                                 {{ $item->sparepart_name }}
@@ -212,7 +212,7 @@ check out
                                     <div class="col-md-3 form-group floating-label">
                                         <div class="formicon"></div>
 
-                                        <input type="text" placeholder="" value="" id="name" class="floating-input" name="partPartial">
+                                        <input type="text" placeholder="" value="" id="name" class="floating-input" name="partPartial[]">
 
                                         <label>Pic/Set/Ltrs/Size <span style="color: ">*</span></label>
                                         @error('name')
@@ -223,8 +223,8 @@ check out
 
                                     <div class="form-group col-sm-3">
 
-                                        <select name="spareParts" id="Dtype3" required>
-
+                                        <select name="spareParts[]" id="Dtype3" required>
+                                            <option value="" selected>Select</option>
                                             @foreach ( $spareParts as $item)
                                             <option value="{{ $item->sparepart_name  }}">
                                                 {{ $item->sparepart_name }}
@@ -238,73 +238,7 @@ check out
                                     <div class="col-md-3 form-group floating-label">
                                         <div class="formicon"></div>
 
-                                        <input type="text" placeholder="" value="" id="name" class="floating-input" name="partPartial">
-
-                                        <label>Pic/Set/Ltrs/Size <span style="color: ">*</span></label>
-                                        @error('name')
-                                        <div>{{ $message }}</div>
-                                        @enderror
-                                        <div class="error-label"></div>
-                                    </div>
-
-
-
-
-
-
-                                     </div>{{--1 row spare end --}}
-
-                                   {{-- spare part  start--}}
-
-                                   <div class="fieldsets row">
-                                    @php
-                                    $spareParts = App\Models\sparePart::all();
-                                    @endphp
-
-                                    <div class="form-group col-sm-3">
-
-                                        <select name="spareParts" id="Dtype3" required>
-
-                                            @foreach ( $spareParts as $item)
-                                            <option value="{{ $item->sparepart_name  }}">
-                                                {{ $item->sparepart_name }}
-                                                {{-- {{ session()->get('locale')=='bn'?  $ga->model_name_bn:  $ga->gallery}} --}}
-                                            </option>
-                                            @endforeach
-
-                                        </select>
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                    <div class="col-md-3 form-group floating-label">
-                                        <div class="formicon"></div>
-
-                                        <input type="text" placeholder="" value="" id="name" class="floating-input" name="partPartial">
-
-                                        <label>Pic/Set/Ltrs/Size <span style="color: ">*</span></label>
-                                        @error('name')
-                                        <div>{{ $message }}</div>
-                                        @enderror
-                                        <div class="error-label"></div>
-                                    </div>
-
-                                    <div class="form-group col-sm-3">
-
-                                        <select name="spareParts" id="Dtype3" required>
-
-                                            @foreach ( $spareParts as $item)
-                                            <option value="{{ $item->sparepart_name  }}">
-                                                {{ $item->sparepart_name }}
-                                                {{-- {{ session()->get('locale')=='bn'?  $ga->model_name_bn:  $ga->gallery}} --}}
-                                            </option>
-                                            @endforeach
-
-                                        </select>
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                    <div class="col-md-3 form-group floating-label">
-                                        <div class="formicon"></div>
-
-                                        <input type="text" placeholder="" value="" id="name" class="floating-input" name="partPartial">
+                                        <input type="text" placeholder="" value="" id="name" class="floating-input" name="partPartial[]">
 
                                         <label>Pic/Set/Ltrs/Size <span style="color: ">*</span></label>
                                         @error('name')
@@ -329,8 +263,8 @@ check out
 
                                     <div class="form-group col-sm-3">
 
-                                        <select name="spareParts" id="Dtype3" required>
-
+                                        <select name="spareParts[]" id="Dtype3" required>
+                                            <option value="" selected>Select</option>
                                             @foreach ( $spareParts as $item)
                                             <option value="{{ $item->sparepart_name  }}">
                                                 {{ $item->sparepart_name }}
@@ -344,9 +278,9 @@ check out
                                     <div class="col-md-3 form-group floating-label">
                                         <div class="formicon"></div>
 
-                                        <input type="text" placeholder="" value="" id="name" class="floating-input" name="partPartial">
+                                        <input type="text" placeholder="" value="" id="name" class="floating-input" name="partPartial[]">
 
-                                        <label>Pic/Set/Ltrs/Size <span style="color: ">*</span></label>
+                                        <label></span></label>
                                         @error('name')
                                         <div>{{ $message }}</div>
                                         @enderror
@@ -355,8 +289,8 @@ check out
 
                                     <div class="form-group col-sm-3">
 
-                                        <select name="spareParts" id="Dtype3" required>
-
+                                        <select name="spareParts[]" id="Dtype3" required>
+                                            <option value="" selected>Select</option>
                                             @foreach ( $spareParts as $item)
                                             <option value="{{ $item->sparepart_name  }}">
                                                 {{ $item->sparepart_name }}
@@ -370,9 +304,70 @@ check out
                                     <div class="col-md-3 form-group floating-label">
                                         <div class="formicon"></div>
 
-                                        <input type="text" placeholder="" value="" id="name" class="floating-input" name="partPartial">
+                                        <input type="text" placeholder="" value="" id="name" class="floating-input" name="partPartial[]">
 
-                                        <label>Pic/Set/Ltrs/Size <span style="color: ">*</span></label>
+                                        <label></span></label>
+                                        @error('name')
+                                        <div>{{ $message }}</div>
+                                        @enderror
+                                        <div class="error-label"></div>
+                                    </div>
+
+                                     </div>{{--1 row spare end --}}
+
+                                   {{-- spare part  start--}}
+
+                                   <div class="fieldsets row">
+                                    @php
+                                    $spareParts = App\Models\sparePart::all();
+                                    @endphp
+
+                                    <div class="form-group col-sm-3">
+
+                                        <select name="spareParts[]" id="Dtype3" required>
+                                            <option value="" selected>Select</option>
+                                            @foreach ( $spareParts as $item)
+                                            <option value="{{ $item->sparepart_name  }}">
+                                                {{ $item->sparepart_name }}
+                                                {{-- {{ session()->get('locale')=='bn'?  $ga->model_name_bn:  $ga->gallery}} --}}
+                                            </option>
+                                            @endforeach
+
+                                        </select>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                    <div class="col-md-3 form-group floating-label">
+                                        <div class="formicon"></div>
+
+                                        <input type="text" placeholder="" value="" id="name" class="floating-input" name="partPartial[]">
+
+                                        <label></span></label>
+                                        @error('name')
+                                        <div>{{ $message }}</div>
+                                        @enderror
+                                        <div class="error-label"></div>
+                                    </div>
+
+                                    <div class="form-group col-sm-3">
+
+                                        <select name="spareParts[]" id="Dtype3" required>
+                                            <option value="" selected>Select</option>
+                                            @foreach ( $spareParts as $item)
+                                            <option value="{{ $item->sparepart_name  }}">
+                                                {{ $item->sparepart_name }}
+                                                {{-- {{ session()->get('locale')=='bn'?  $ga->model_name_bn:  $ga->gallery}} --}}
+                                            </option>
+                                            @endforeach
+
+                                        </select>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                    <div class="col-md-3 form-group floating-label">
+                                        <div class="formicon"></div>
+
+                                        <input type="text" placeholder="" value="" id="name" class="floating-input" name="partPartial[]">
+
+                                        <label></span></label>
                                         @error('name')
                                         <div>{{ $message }}</div>
                                         @enderror
@@ -395,8 +390,8 @@ check out
 
                                     <div class="form-group col-sm-3">
 
-                                        <select name="spareParts" id="Dtype3" required>
-
+                                        <select name="spareParts[]" id="Dtype3" required>
+                                            <option value="" selected>Select</option>
                                             @foreach ( $spareParts as $item)
                                             <option value="{{ $item->sparepart_name  }}">
                                                 {{ $item->sparepart_name }}
@@ -410,9 +405,9 @@ check out
                                     <div class="col-md-3 form-group floating-label">
                                         <div class="formicon"></div>
 
-                                        <input type="text" placeholder="" value="" id="name" class="floating-input" name="partPartial">
+                                        <input type="text" placeholder="" value="" id="name" class="floating-input" name="partPartial[]">
 
-                                        <label>Pic/Set/Ltrs/Size <span style="color: ">*</span></label>
+                                        <label></span></label>
                                         @error('name')
                                         <div>{{ $message }}</div>
                                         @enderror
@@ -421,8 +416,8 @@ check out
 
                                     <div class="form-group col-sm-3">
 
-                                        <select name="spareParts" id="Dtype3" required>
-
+                                        <select name="spareParts[]" id="Dtype3" required>
+                                            <option value="" selected>Select</option>
                                             @foreach ( $spareParts as $item)
                                             <option value="{{ $item->sparepart_name  }}">
                                                 {{ $item->sparepart_name }}
@@ -436,9 +431,9 @@ check out
                                     <div class="col-md-3 form-group floating-label">
                                         <div class="formicon"></div>
 
-                                        <input type="text" placeholder="" value="" id="name" class="floating-input" name="partPartial">
+                                        <input type="text" placeholder="" value="" id="name" class="floating-input" name="partPartial[]">
 
-                                        <label>Pic/Set/Ltrs/Size <span style="color: ">*</span></label>
+                                        <label></span></label>
                                         @error('name')
                                         <div>{{ $message }}</div>
                                         @enderror
@@ -461,8 +456,8 @@ check out
 
                                     <div class="form-group col-sm-3">
 
-                                        <select name="spareParts" id="Dtype3" required>
-
+                                        <select name="spareParts[]" id="Dtype3" required>
+                                            <option value="" selected>Select</option>
                                             @foreach ( $spareParts as $item)
                                             <option value="{{ $item->sparepart_name  }}">
                                                 {{ $item->sparepart_name }}
@@ -476,9 +471,9 @@ check out
                                     <div class="col-md-3 form-group floating-label">
                                         <div class="formicon"></div>
 
-                                        <input type="text" placeholder="" value="" id="name" class="floating-input" name="partPartial">
+                                        <input type="text" placeholder="" value="" id="name" class="floating-input" name="partPartial[]">
 
-                                        <label>Pic/Set/Ltrs/Size <span style="color: ">*</span></label>
+                                        <label></span></label>
                                         @error('name')
                                         <div>{{ $message }}</div>
                                         @enderror
@@ -487,8 +482,8 @@ check out
 
                                     <div class="form-group col-sm-3">
 
-                                        <select name="spareParts" id="Dtype3" required>
-
+                                        <select name="spareParts[]" id="Dtype3" required>
+                                            <option value="" selected>Select</option>
                                             @foreach ( $spareParts as $item)
                                             <option value="{{ $item->sparepart_name  }}">
                                                 {{ $item->sparepart_name }}
@@ -502,9 +497,9 @@ check out
                                     <div class="col-md-3 form-group floating-label">
                                         <div class="formicon"></div>
 
-                                        <input type="text" placeholder="" value="" id="name" class="floating-input" name="partPartial">
+                                        <input type="text" placeholder="" value="" id="name" class="floating-input" name="partPartial[]">
 
-                                        <label>Pic/Set/Ltrs/Size <span style="color: ">*</span></label>
+                                        <label><span style="color: "></span></label>
                                         @error('name')
                                         <div>{{ $message }}</div>
                                         @enderror

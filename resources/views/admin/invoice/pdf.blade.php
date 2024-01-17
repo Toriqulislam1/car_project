@@ -312,7 +312,7 @@
                     </div>
                     <div class="invoice-header-contents" style="float:right;margin-top:-120px;">
 
-                        <h5>invoice</h5>
+                        <h5>Date:{{$invoice_info->created_at}}</h5>
                     </div>
                 </div>
             </div>
@@ -325,11 +325,10 @@
                         </ul>
                     </div>
                     <div class="invoice-single-details" style="float:right;margin-top:-120px;">
-                        <h4 class="invoice-details-title">{{ __('Ship To:') }}</h4>
+                        <h4 class="invoice-details-title">{{ __('24 Car Service Dhaka') }}</h4>
                         <ul class="details-list">
-                            <li class="list"> <strong>{{ __('City') }}: </strong> {{ __('Dhaka 1215') }} </li>
-                            <li class="list"> <strong>{{ __('Area') }}: </strong> {{ __('Farmgate') }} </li>
-                            <li class="list"> <strong>{{ __('Address') }}: </strong>{{ __('149/A, ') }} </li>
+                            <li class="list"> <strong>{{ __('Address') }}: </strong>{{ __('Plot 15 Sector 15 9 Avenue Road Uttara ') }} </li>
+                            <li class="list"> <strong>{{ __('Mobile') }}: </strong>{{ __('01725603009') }} </li>
 
                         </ul>
                     </div>
@@ -339,21 +338,23 @@
                 <table class="custom--table">
                     <tbody>
                         <tr>
-                            <td>name: {{$invoice_info->name }}</td>
-                            <td>address:{{ $invoice_info->address }}</td>
-                            <td>email:{{$invoice_info->email }}</td>
-                            <td>phone:{{ $invoice_info->phone}}</td>
+                            <td>Name: {{$invoice_info->name }}</td>
+                            <td>Address:{{ $invoice_info->address }}</td>
+                            <td>Email:{{$invoice_info->email }}</td>
+                            <td>Phone:{{ $invoice_info->phone}}</td>
                         </tr>
                         <tr>
-                            <td> year:{{$invoice_info->caryear }}</td>
-                            <td>engine:{{ $invoice_info->engine }}</td>
-                            <td>model:{{$invoice_info->model }}</td>
-                            <td>brand:{{ $invoice_info->brand}}</td>
+                            <td>Year:{{$invoice_info->caryear }}</td>
+                            <td>Engine:{{ $invoice_info->engine }}</td>
+                            <td>Chassis:{{$invoice_info->chassis }}</td>
+                            <td>Model:{{$invoice_info->model }}</td>
+
                         </tr>
                         <tr>
-                            <td>registration:{{$invoice_info->registration }}</td>
+                            <td>Brand:{{ $invoice_info->brand}}</td>
+                            <td>Registration:{{$invoice_info->registration }}</td>
                             <td>K.M{{ $invoice_info->km }}</td>
-                            <td>chassis:{{$invoice_info->chassis }}</td>
+
 
                         </tr>
                     </tbody>
@@ -361,7 +362,7 @@
             </div>
 
             <div class="item-description">
-                <h5 class="table-title">{{ __('service details') }}</h5>
+                <h5 class="table-title">{{ __('Service Charge') }}</h5>
                 <table class="custom--table">
                     <thead>
                         <tr>
@@ -388,13 +389,13 @@
                         @php
                         $serviceTotal = $services->pluck('amount')->sum()
                         @endphp
-                        <h5 class="">{{ __('Totall TK:') }}{{ $serviceTotal }}</h5>
+                        {{-- <h5 class="">{{ __('Totall TK:') }}{{ $serviceTotal }}</h5> --}}
                     </tbody>
                 </table>
             </div>
 
             <div class="item-description">
-                <h5 class="table-title">{{ __('spare parts') }}</h5>
+                <h5 class="table-title">{{ __('Spare Parts') }}</h5>
                 <div class="table-responsive">
 
                     <table class="custom--table">
@@ -425,7 +426,7 @@
                             $sparepartsTotal = $spareparts->pluck('amount')->sum()
                             @endphp
 
-                            <h5 class="">{{ __('Totall TK:') }}{{ $sparepartsTotal }}</h5>
+                            {{-- <h5 class="">{{ __('Totall TK:') }}{{ $sparepartsTotal }}</h5> --}}
 
 
                         </tbody>
@@ -437,14 +438,14 @@
                     <table class="custom--table">
                         <tbody>
                             <tr>
-                                <td>service total</td>
+                                <td>Total Service Charge </td>
                                 <td>{{ $sparepartsTotal }}</td>
                             </tr>
                             <tr>
-                                <td>spare total</td>
+                                <td>Total Spare Parts </td>
                                 <td>{{ $sparepartsTotal }}</td>
                             </tr>
-                            <h5>{{ __('service and spare sub Totall TK') }} {{$serviceTotal+$sparepartsTotal }}</h5>
+                            <h5>{{ __('Sub Total (Spare Parts & Service Charge) TK') }} {{$serviceTotal+$sparepartsTotal }}</h5>
 
                         </tbody>
                     </table>

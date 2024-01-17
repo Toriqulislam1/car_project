@@ -47,6 +47,7 @@ class orderController extends Controller
 
     {
 
+        
 
         $alldata = $request->all();
 
@@ -101,7 +102,7 @@ class orderController extends Controller
                 'registration' => $request->registration,
 
                 'Others' => $request->Others,
-                
+
 
 
 

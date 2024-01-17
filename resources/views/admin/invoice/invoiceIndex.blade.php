@@ -216,12 +216,12 @@
 
                                                 <tr>
 
-                                                    <td><input type="text" name="addmore[0][service]" placeholder="Enter your Service" class="form-control" /></td>
+                                                    <td><input type="text" name="addmore[0][service]" placeholder="" class="form-control" /></td>
 
-                                                    <td><input type="text" name="addmore[0][qty]" placeholder="Enter your Qty" class="form-control" /></td>
+                                                    <td><input type="text" name="addmore[0][qty]" placeholder="" class="form-control" /></td>
 
-                                                    <td><input type="text" name="addmore[0][rate]" placeholder="Enter your Rate" class="form-control" /></td>
-                                                    <td><input type="text" name="addmore[0][amount]" placeholder="Enter your Amount" class="form-control" /></td>
+                                                    <td><input type="text" name="addmore[0][rate]" placeholder="" class="form-control" /></td>
+                                                    <td><input type="text" name="addmore[0][amount]" placeholder="" class="form-control" /></td>
 
                                                     <td><button type="button" name="add" id="add">Add More</button></td>
 
@@ -248,12 +248,12 @@
 
                                                 <tr>
 
-                                                    <td><input type="text" name="addpart[0][part]" placeholder="Enter your Spare Part's" class="form-control" /></td>
+                                                    <td><input type="text" name="addpart[0][part]" placeholder="" class="form-control" /></td>
 
-                                                    <td><input type="text" name="addpart[0][qty1]" placeholder="Enter your Qty" class="form-control" /></td>
+                                                    <td><input type="text" name="addpart[0][qty1]" placeholder="" class="form-control" /></td>
 
-                                                    <td><input type="text" name="addpart[0][rate]" placeholder="Enter your Rate" class="form-control" /></td>
-                                                    <td><input type="text" name="addpart[0][amount]" placeholder="Enter your Amount" class="form-control" /></td>
+                                                    <td><input type="text" name="addpart[0][rate]" placeholder="" class="form-control" /></td>
+                                                    <td><input type="text" name="addpart[0][amount]" placeholder="" class="form-control" /></td>
 
                                                     <td><button type="button" name="add" id="addSpare">Add More</button></td>
 
@@ -268,7 +268,7 @@
                                                 <!-- start 3rd row  -->
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <h5>Service cost<span class="text-danger">*</span></h5>
+                                                        <h5>Service Cost<span class="text-danger">*</span></h5>
                                                         <div class="controls">
                                                             <input type="text" name="serviceCost" class="form-control" required="">
                                                             @error('content_title')
@@ -280,7 +280,7 @@
                                                 </div> <!-- end col md 6 -->
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <h5>parts cost <span class="text-danger">*</span></h5>
+                                                        <h5>Parts Cost <span class="text-danger">*</span></h5>
                                                         <div class="controls">
                                                             <input type="text" name="partCost" class="form-control" required="">
                                                             @error('content_title')
@@ -319,7 +319,7 @@
 
         ++i;
 
-        $("#dynamicTable").append('<tr><td><input type="text" name="addmore[' + i + '][service]" placeholder="Enter your service" class="form-control" /></td><td><input type="text" name="addmore[' + i + '][qty]" placeholder="Enter your Qty" class="form-control" /></td><td><input type="text" name="addmore[' + i + '][rate]" placeholder="Enter your rate" class="form-control" /></td><td><input type="text" name="addmore[' + i + '][amount]" placeholder="Enter your amount" class="form-control" /></td><td><button class="remove-tr" type="button" >Remove</button></td></tr>');
+        $("#dynamicTable").append('<tr><td><input type="text" name="addmore[' + i + '][service]" placeholder="" class="form-control" /></td><td><input type="text" name="addmore[' + i + '][qty]" placeholder="" class="form-control" /></td><td><input type="text" name="addmore[' + i + '][rate]" placeholder="" class="form-control" /></td><td><input type="text" name="addmore[' + i + '][amount]" placeholder="" class="form-control" /></td><td><button class="remove-tr" type="button" >Remove</button></td></tr>');
 
     });
 
@@ -339,7 +339,7 @@
 
         ++i;
 
-        $("#dynamicTable2").append('<tr><td><input type="text" name="addpart[' + i + '][part]" placeholder="Enter your parts" class="form-control" /></td><td><input type="text" name="addpart[' + i + '][qty1]" placeholder="Enter your Qty" class="form-control" /></td><td><input type="text" name="addpart[' + i + '][rate]" placeholder="Enter your rate" class="form-control" /></td><td><input type="text" name="addpart[' + i + '][amount]" placeholder="Enter your amount" class="form-control" /></td><td><button class="remove-tr" type="button" >Remove</button></td></tr>');
+        $("#dynamicTable2").append('<tr><td><input type="text" name="addpart[' + i + '][part]" placeholder="" class="form-control" /></td><td><input type="text" name="addpart[' + i + '][qty1]" placeholder="" class="form-control" /></td><td><input type="text" name="addpart[' + i + '][rate]" placeholder="" class="form-control" /></td><td><input type="text" name="addpart[' + i + '][amount]" placeholder="" class="form-control" /></td><td><button class="remove-tr" type="button" >Remove</button></td></tr>');
 
     });
 
