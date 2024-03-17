@@ -28,6 +28,8 @@ use App\Http\Controllers\Frontend\userLoginController;
 use App\Http\Controllers\Frontend\orderController;
 use App\Http\Controllers\localizationControllar;
 use App\Models\product;
+use App\Models\serviceCategory;
+
 use FontLib\Table\Type\name;
 use App\Models\Articles;
 use App\Models\Language;
@@ -89,8 +91,12 @@ Route::get('/local/{locale}',[localizationControllar::class, 'setLang'])->name('
 //frontend show url
 Route::get('/', function()
 {
+    $service_cat = serviceCategory::all();
     $products = product::where('status',1)->get();
-    return view('frontend.index',['products'=>$products]);
+    return view('frontend.index',[
+        'products'=>$products,
+        'service_cat'=>$service_cat,
+    ]);
 });
 
 ///admin login

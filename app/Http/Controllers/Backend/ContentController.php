@@ -106,7 +106,7 @@ class ContentController extends Controller
 
 		$image = $request->file('breadcrumb');
     	$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-    	Image::make($image)->resize(917,1000)->save('upload/services/'.$name_gen);
+    	Image::make($image)->resize(600,500)->save('upload/services/'.$name_gen);
     	$save_url = 'upload/services/'.$name_gen;
 
 		if($request->hasFile("thamble")){
@@ -158,10 +158,10 @@ class ContentController extends Controller
 	public function EditContent($id){
 
 
-		$categories = Category::latest()->get();
-		$subcategory = subcategory::latest()->get();
+		$categories = serviceCategory::latest()->get();
+
 		$services = Services::findOrFail($id);
-		return view('admin.content.content_edit',compact('categories','subcategory','services'));
+		return view('admin.content.content_edit',compact('categories','services'));
 
 	} //end
 
@@ -210,7 +210,7 @@ class ContentController extends Controller
 
 	   $image = $request->file('thamble');
 		   $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-		   Image::make($image)->resize(917,1000)->save('upload/services/'.$name_gen);
+		   Image::make($image)->resize(600,500)->save('upload/services/'.$name_gen);
 		   $save_url = 'upload/services/'.$name_gen;
 
 		   Services::findOrFail($pro_id)->update([

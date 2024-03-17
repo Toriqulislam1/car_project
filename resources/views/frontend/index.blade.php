@@ -100,15 +100,23 @@ $setting = App\Models\setting::find(1);
             </div>
         </div>
 
+
+
+
+
         <div class="fieldsets row">
+
             @if(session('loginError'))
             <div class="alert alert-danger">
                 <strong> {{(session('loginError')) }}</strong>
             </div>
             @endif
+            @foreach ($service_cat as $service_cat)
+            <h5 class="text-center">{{$service_cat->category_name  }}</h5>
             <div class="row justify-content-center">
                 @php
-                $services = App\Models\Services::where('status',1)->get();
+                $services = App\Models\Services::where('category_id',$service_cat->id)->get();
+
                 @endphp
                 @foreach ($services as $item )
                 <div class="col-lg-4 col-sm-6 mt30 wow fadeIn" data-wow-delay=".2s">
@@ -127,7 +135,11 @@ $setting = App\Models\setting::find(1);
                 @endforeach
 
             </div>
+            @endforeach
         </div>
+
+
+
 </section>
 
 

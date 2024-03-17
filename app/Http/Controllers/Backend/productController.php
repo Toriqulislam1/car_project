@@ -25,7 +25,7 @@ class productController extends Controller
 
         $image = $request->file('image');
     	$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-    	Image::make($image)->save('upload/product/'.$name_gen);
+    	Image::make($image)->resize(600,500)->save('upload/product/'.$name_gen);
     	$save_url = 'upload/product/'.$name_gen;
 
 
@@ -81,7 +81,7 @@ class productController extends Controller
 
         $image = $request->file('image');
     	$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-    	Image::make($image)->save('upload/product/'.$name_gen);
+    	Image::make($image)->resize(600,500)->save('upload/product/'.$name_gen);
     	$save_url = 'upload/product/'.$name_gen;
 
 
@@ -205,7 +205,7 @@ class productController extends Controller
                 'partPartial' => json_encode($request->partPartial),
 
                 'Others' => $request->Others,
- 
+
             ]);
             product::where('id', $request->product_id)->decrement('stock',1);
 
