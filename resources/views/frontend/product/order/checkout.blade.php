@@ -34,7 +34,7 @@ check out
                         @endif
                         <div class="contact-form-card-pr contact-block-sw m0 iconin">
                             <div class="form-block niwaxform">
-                                {{-- <form action="{{ route('product-checkout-store') }}" id="contactform" method="post" novalidate="novalidate"> --}}
+                                <form action="{{ route('product-checkout-store') }}" id="contactform" method="post" novalidate="novalidate">
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{ $product_id->id}}">
                                     <div class="fieldsets row">
@@ -94,7 +94,7 @@ check out
                                         @endphp
 
                                         <div class="form-group col-sm-4">
-                                            {{ Form::open(array('url'=>'','file'=>'true')) }}
+
                                             <span>@lang('lang.BrandName')</span>
                                             <select name="carBrand" id="category" required>
                                                 <option>@lang('lang.SelectBrand')</option>
@@ -118,7 +118,7 @@ check out
                                             </select>
                                             <div class="help-block with-errors"></div>
                                         </div>
-                                        {{ Form::close() }}
+
                                         @php
                                         $carNumYears = App\Models\caryear::all();
                                         @endphp
@@ -523,7 +523,7 @@ check out
 
 
                         <div class="fieldsets mt20"> <button type="submit" id="p" name="submit" class="btn btn-main bg-btn w-fit mb20"><span>@lang('lang.OrderNow')<i class="fas fa-chevron-right fa-icon"></i></span> <span class="loader"></span></button> </div>
-                        {{-- </form> --}}
+                        </form>
 
                     </div>
                 </div>

@@ -64,7 +64,7 @@
           </li>
 
 
-        <li class="treeview">
+        {{-- <li class="treeview">
           <a href="#">
             <i data-feather="message-circle"></i>
             <span>Car Model</span>
@@ -74,9 +74,9 @@
           </a>
           <ul class="treeview-menu">
 
-            <li><a href="{{ route('add-gallery')}}"><i class="ti-more"></i>Car model add</a></li>
+            <li><a href="{{ route('add-gallery')}}"><i class="ti-more"></i>Gallary add</a></li>
           </ul>
-        </li>
+        </li> --}}
 
 
 
@@ -133,6 +133,7 @@
           </a>
           <ul class="treeview-menu">
 
+            <li><a href="{{ route('add-catagory-service')}}"><i class="ti-more"></i>Category Add</a></li>
             <li><a href="{{ route('add-content')}}"><i class="ti-more"></i>Add service</a></li>
             <li><a href="{{ route('manage-content')}}"><i class="ti-more"></i>Manage service</a></li>
 

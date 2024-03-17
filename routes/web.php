@@ -272,6 +272,24 @@ Route::get('/child/delete/{id}', [SubCategoryController::class, 'ChildCategoryDe
     });
 
 
+
+// servicer category route
+
+Route::get('service/category/add', [ContentController::class, 'AddServiceCategory'])->name('add-catagory-service');
+Route::post('service/category/store', [ContentController::class, 'ServiceCategoryStore'])->name('service.category.store');
+Route::get('service/category/edit/{id}', [ContentController::class, 'ServiceCategoryEdit'])->name('service.category.edit');
+Route::post('service/category/update/{id}', [ContentController::class, 'ServiceCategoryUpdate'])->name('service.category.update');
+Route::get('service/category/delete/{id}', [ContentController::class, 'ServiceCategoryDelete'])->name('service.category.delete');
+
+
+// servicer category route end
+
+
+
+
+
+
+
 //show product checkout page brand and model show
 Route::get('/product/checkout/ajax/subcat', function (Request $request) {
         $cat_id = $request->input('cat_id');

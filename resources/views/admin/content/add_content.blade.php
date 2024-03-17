@@ -21,7 +21,23 @@
                                 <div class="col-12">
                                     <div class="row">
                                         <!-- start 2nd row  -->
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <h5>Category Select <span class="text-danger">*</span></h5>
+                                                <div class="controls">
+                                                    <select name="category_id" class="form-control"  >
+                                                        <option value="" selected="" disabled="">Select Category</option>
+                                                        @foreach($categories as $category)
+                                                        <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('category_id')
+                                                 <span class="text-danger">{{ $message }}</span>
+                                                 @enderror
+                                                </div>
+                                            </div>
+                                        </div> <!-- end col md 6 -->
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <h5>Breadcrumb Header <span class="text-danger">*</span></h5>
                                                 <div class="controls">
@@ -32,7 +48,7 @@
                                                 </div>
                                             </div>
                                         </div> <!-- end col md 6 -->
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <h5>Breadcrumb Banner <span class="text-danger">*</span></h5>
                                                 <div class="controls">

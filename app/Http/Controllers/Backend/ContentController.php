@@ -7,13 +7,94 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\subcategory;
 use App\Models\Services;
+use App\Models\serviceCategory;
 use Carbon\Carbon;
 use Image;
 
 class ContentController extends Controller
 {
+
+
+    // service category section
+    public function AddServiceCategory(){
+        $category = serviceCategory::latest()->get();
+		return view('admin.content.category.index',compact('category'));
+
+	}
+
+    public function ServiceCategoryStore(Request $request){
+
+        $request->validate([
+            'category_name' => 'required',
+            'category_name_bn' => 'required',
+
+        ],[
+            'category_name.required' => 'Input category Name',
+            'category_name_bn.required' => 'Input category Name Bangla',
+
+        ]);
+
+
+
+        serviceCategory::insert([
+        'category_name' => $request->category_name,
+        'category_name_bn' => $request->category_name_bn,
+
+
+        ]);
+
+        $notification = array(
+            'message' => 'service category Inserted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+
+    } // end method
+
+
+
+        function ServiceCategoryEdit($id){
+
+		$category = serviceCategory::findOrFail($id);
+		return view('admin.content.category.edit',compact('category'));
+
+        }//end
+
+
+        function ServiceCategoryUpdate(Request $request,$id){
+
+
+        serviceCategory::findOrFail($id)->update([
+            'category_name' => $request->category_name,
+            'category_name_bn' => $request->category_name_bn,
+    	]);
+
+	    $notification = array(
+			'message' => 'category Updated Successfully',
+			'alert-type' => 'success'
+		);
+
+		return redirect()->route('add-catagory-service')->with($notification);
+
+
+        }
+
+
+	   public function ServiceCategoryDelete($id){
+		serviceCategory::findOrFail($id)->delete();
+		$notification = array(
+		   'message' => 'Service category Deleted Successfully',
+		   'alert-type' => 'success'
+	   );
+
+	   return redirect()->back()->with($notification);
+    }
+
+    // service section start
+
     public function AddContent(){
-		$categories = Category::latest()->get();
+		$categories = serviceCategory::latest()->get();
 		return view('admin.content.add_content',compact('categories'));
 
 	}
