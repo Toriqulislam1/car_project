@@ -1,7 +1,8 @@
 <?php
 
 use App\Models\User;
-
+use App\Models\Subcategory;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AdminProfileController;
@@ -167,7 +168,7 @@ Route::prefix('order')->group(function (){
     Route::get('/checkout/work/{product_id}',[orderController::class, 'checkOutWorkIndex'])->name('checkOut-work-index');
     Route::post('/checkout/store',[orderController::class, 'checkStore'])->name('checkout-store');
     Route::get('/all',[orderController::class, 'allOrder'])->name('order-show');
-    Route::post('/status/update',[orderController::class, 'statusUpdate'])->name('status-update');
+    Route::post('/service/status/update',[orderController::class, 'statusUpdate'])->name('service-status-update');
     Route::get('/invoice/{id}',[orderController::class, 'invoice'])->name('invoice');
     Route::get('/payment',[orderController::class, 'userPayment'])->name('order-user-payment');
     Route::get('/user/payment/download/{id}',[orderController::class, 'userPaymentDownload'])->name('user-download-payment');
@@ -245,6 +246,8 @@ Route::get('/sub/edit/{id}', [SubCategoryController::class, 'SubCategoryEdit'])-
 
 Route::get('/subcategory/ajax/{category_id}', [SubCategoryController::class, 'GetSubCategory']);
 
+
+
 Route::post('/sub/update', [SubCategoryController::class, 'SubCategoryUpdate'])->name('subcategory.update');
 
 Route::get('/sub/delete/{id}', [SubCategoryController::class, 'SubCategoryDelete'])->name('subcategory.delete');
@@ -267,6 +270,16 @@ Route::get('/child/delete/{id}', [SubCategoryController::class, 'ChildCategoryDe
 
 
     });
+
+
+//show product checkout page brand and model show
+Route::get('/product/checkout/ajax/subcat', function (Request $request) {
+        $cat_id = $request->input('cat_id');
+         $subcategories = subcategory::where('category_id', $cat_id)->get();
+
+        return response()->json( $subcategories);
+    });
+
 
 
 // Admin Content All Routes

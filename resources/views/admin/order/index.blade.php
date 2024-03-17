@@ -44,9 +44,10 @@
 
 
 		<td width="25%">
-            <form method="post" action="{{ route('status-update') }}" >
-                <input type="hidden" name="id" value="{{$item->id  }}">
+            <form method="post" action="{{ route('service-status-update') }}" >
                 @csrf
+                <input type="hidden" name="id" value="{{$item->id  }}">
+
                 <select name="status">
                     <option>panding</option>
                     <option>confirm</option>

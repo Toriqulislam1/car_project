@@ -205,7 +205,7 @@ class productController extends Controller
                 'partPartial' => json_encode($request->partPartial),
 
                 'Others' => $request->Others,
-
+ 
             ]);
             product::where('id', $request->product_id)->decrement('stock',1);
 

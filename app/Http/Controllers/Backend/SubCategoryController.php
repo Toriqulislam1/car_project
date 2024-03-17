@@ -28,26 +28,26 @@ class SubCategoryController extends Controller
              'category_id.required' => 'Please select Any option',
              'subcategory_name.required' => 'Input SubCategory  Name',
          ]);
- 
-          
- 
+
+
+
         subcategory::insert([
          'category_id' => $request->category_id,
          'subcategory_name' => $request->subcategory_name,
          'subcategory_slug' => strtolower(str_replace(' ', '-',$request->subcategory_name)),
          'created_at' => Carbon::now(),
-         
- 
+
+
          ]);
- 
+
          $notification = array(
              'message' => 'SubCategory Inserted Successfully',
              'alert-type' => 'success'
          );
- 
+
          return redirect()->back()->with($notification);
- 
-     } // end method 
+
+     } // end method
 
      public function SubCategoryEdit($id){
     	$categories = Category::orderBy('category_name','ASC')->get();
@@ -62,12 +62,12 @@ class SubCategoryController extends Controller
     	$subcat_id = $request->id;
 
     	 SubCategory::findOrFail($subcat_id)->update([
-		
+
 		'subcategory_name' => $request->subcategory_name,
 		'subcategory_slug' => strtolower(str_replace(' ', '-',$request->subcategory_name)),
         'created_at' => Carbon::now(),
-		
-		 
+
+
 
     	]);
 
@@ -95,14 +95,14 @@ class SubCategoryController extends Controller
 
     } //end
 
-   
+
 
      //////  Child category ///////
      public function ChildCategoryView(){
         $categories = Category::orderBy('category_name','ASC')->get();
         $childcategory = ChildCategory::latest()->get();
         return view('admin.category.childcategory_view',compact('childcategory','categories'));
-        
+
     } //end
 
     public function GetSubCategory($category_id){
@@ -110,6 +110,13 @@ class SubCategoryController extends Controller
         $subcat = SubCategory::where('category_id',$category_id)->orderBy('subcategory_name','ASC')->get();
         return json_encode($subcat);
     }
+    // public function GetSubCategoryShowCheckout(){
+
+    //    $cat_id =Input::get('cat_id');
+    //    $subcategories = subcategory::where('category_id', '=',$cat_id)->get();
+
+    //     return Response()->json( $subcategories);
+    // }
 
 
 
@@ -131,26 +138,26 @@ class SubCategoryController extends Controller
              'subcategory_id.required' => 'Please select Any option',
              'childcategory_name.required' => 'Input SubCategory  Name',
          ]);
- 
-          
- 
+
+
+
         childcategory::insert([
          'category_id' => $request->category_id,
          'subcategory_id' => $request->subcategory_id,
          'childcategory_name' => $request->childcategory_name,
          'childcategory_slug' => strtolower(str_replace(' ', '-',$request->childcategory_name)),
-         
- 
+
+
          ]);
- 
+
          $notification = array(
              'message' => 'ChildCategory Inserted Successfully',
              'alert-type' => 'success'
          );
- 
+
          return redirect()->back()->with($notification);
- 
-     } // end method 
+
+     } // end method
 
      public function ChildCategoryEdit($id){
     	$categories = Category::orderBy('category_name','ASC')->get();
@@ -171,7 +178,7 @@ class SubCategoryController extends Controller
 		'subcategory_id' => $request->subcategory_id,
 		'childcategory_name' => $request->childcategory_name,
 		'childcategory_slug' => strtolower(str_replace(' ', '-',$request->childcategory_name)),
-		
+
 
 
     	]);
@@ -183,7 +190,7 @@ class SubCategoryController extends Controller
 
         return redirect()->route('all.childcategory')->with($notification);
 
-    } // end method 
+    } // end method
 
     public function ChildCategoryDelete($id){
 
@@ -197,7 +204,7 @@ class SubCategoryController extends Controller
 
     }
 
-     
-   
- 
+
+
+
 }

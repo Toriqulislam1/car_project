@@ -2,7 +2,7 @@
 @section('admin')
 
  <!-- Content Wrapper. Contains page content -->
- 
+
 	  <div class="container-full">
 		<!-- Content Header (Page header) -->
 		<div class="content-header">
@@ -11,7 +11,7 @@
 					<h3 class="page-title">Data Tables</h3>
 					<div class="d-inline-block align-items-center">
 						<nav>
-						
+
 						</nav>
 					</div>
 				</div>
@@ -21,8 +21,8 @@
 		<!-- Main content -->
 		<section class="content">
 		  <div class="row">
-			  
-			
+
+
 
             <!--   ------------ Add Category Page -------- -->
 
@@ -31,7 +31,7 @@
 
 <div class="box">
    <div class="box-header with-border">
-     <h3 class="box-title">Update Sub Category </h3>
+     <h3 class="box-title">Update Model </h3>
    </div>
    <!-- /.box-header -->
    <div class="box-body">
@@ -41,60 +41,68 @@
 <form method="post" action="{{ route('subcategory.update') }}" >
 @csrf
 
-<input type="hidden" name="id" value="{{ $subcategory->id }}">  
+<input type="hidden" name="id" value="{{ $subcategory->id }}">
 
 <div class="form-group">
-	<h5>Category Select <span class="text-danger">*</span></h5>
+	<h5>Brand Select <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="category_id" class="form-control"  >
 			<option value="" selected="" disabled="">Select Category</option>
 			@foreach($categories as $category)
-			<option {{ $category->id == $subcategory->category_id ? 'selected': ''}} >{{ $category->category_name }}</option>	
+			<option {{ $category->id == $subcategory->category_id ? 'selected': ''}} >{{ $category->category_name }}</option>
 			@endforeach
 		</select>
-		@error('category_id') 
+		@error('category_id')
 	 <span class="text-danger">{{ $message }}</span>
-	 @enderror 
+	 @enderror
 	 </div>
 		 </div>
 
 
             <div class="form-group">
-            <h5>Input Sub Category Name  <span class="text-danger">*</span></h5>
+            <h5>Input Model Name  <span class="text-danger">*</span></h5>
             <div class="controls">
-            <input type="text"  name="subcategory_name" class="form-control" value="{{ $subcategory->subcategory_name }}" > 
-            @error('subcategory_name') 
+            <input type="text"  name="subcategory_name" class="form-control" value="{{ $subcategory->subcategory_name }}" >
+            @error('subcategory_name')
             <span class="text-danger">{{ $message }}</span>
-            @enderror 
+            @enderror
             </div>
             </div>
-                
 
+            <div class="form-group">
+                <h5>Model Name BN <span class="text-danger">*</span></h5>
+                <div class="controls">
+                <input type="text"  name="subcategory_name_bn" value="{{ $subcategory->subcategory_name_bn }}" class="form-control" >
+                @error('subcategory_name')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+                </div>
+                </div>
             <div class="text-xs-right">
-            <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">					 
+            <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">
                     </div>
 </form>
 
 
 
 
-         
+
        </div>
    </div>
    <!-- /.box-body -->
  </div>
- <!-- /.box --> 
+ <!-- /.box -->
 </div>
 
-		
+
 		  </div>
 		  <!-- /.row -->
 		</section>
 		<!-- /.content -->
-	  
+
 	  </div>
 
   <!-- /.content-wrapper -->
-  
+
 
 @endsection

@@ -104,6 +104,7 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="{{ route('all.category')}}"><i class="ti-more"></i>Create brand</a></li>
+              <li><a href="{{ route('all.subcategory')}}"><i class="ti-more"></i>Create Model</a></li>
             </ul>
           </li>
 		<li class="treeview">

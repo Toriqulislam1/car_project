@@ -10,9 +10,10 @@ check out
 
 </style>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" integrity="sha512-W/zrbCncQnky/EzL+/AYwTtosvrM+YG/V6piQLSe2HuKS6cmbw89kjYkp3tWFn1dkWV7L1ruvJyKbLz73Vlgfg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"> --}}
+{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" integrity="sha512-W/zrbCncQnky/EzL+/AYwTtosvrM+YG/V6piQLSe2HuKS6cmbw89kjYkp3tWFn1dkWV7L1ruvJyKbLz73Vlgfg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
+{{-- <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> --}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <section class="contact-page pad-tb bg-gradient3">
     <div class="container ">
@@ -33,7 +34,7 @@ check out
                         @endif
                         <div class="contact-form-card-pr contact-block-sw m0 iconin">
                             <div class="form-block niwaxform">
-                                <form action="{{ route('product-checkout-store') }}" id="contactform" method="post" novalidate="novalidate">
+                                {{-- <form action="{{ route('product-checkout-store') }}" id="contactform" method="post" novalidate="novalidate"> --}}
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{ $product_id->id}}">
                                     <div class="fieldsets row">
@@ -91,12 +92,14 @@ check out
                                         @php
                                         $brands = App\Models\Category::all();
                                         @endphp
+
                                         <div class="form-group col-sm-4">
+                                            {{ Form::open(array('url'=>'','file'=>'true')) }}
                                             <span>@lang('lang.BrandName')</span>
-                                            <select name="carBrand" id="Dtype2" required>
+                                            <select name="carBrand" id="category" required>
                                                 <option>@lang('lang.SelectBrand')</option>
                                                 @foreach ($brands as $brand)
-                                                <option value="{{ $brand->category_name }}">
+                                                <option value="{{ $brand->id }}">
                                                     {{ session()->get('locale')=='bn'? $brand->brand_bn: $brand->category_name}}
                                                 </option>
                                                 @endforeach
@@ -105,19 +108,17 @@ check out
                                         </div>
                                         <div class="form-group col-sm-4">
                                             <span>@lang('lang.TemplateName')</span>
-                                            <select name="carModel" id="Dtype2" required>
+                                            <select name="carModel" id="subcategory"  required>
                                                 <option>@lang('lang.SelectTemplate')</option>
-                                                @php
-                                                $models = App\Models\gallery::all();
-                                                @endphp
-                                                @foreach ($models as $item)
-                                                <option value="{{ $item->gallery  }}">
-                                                    {{ session()->get('locale')=='bn'?  $item->model_name_bn:  $item->gallery}}
+
+                                                <option value="">
+                                                    {{-- {{ session()->get('locale')=='bn'?  $item->model_name_bn:  $item->gallery}} --}}
                                                 </option>
-                                                @endforeach
+
                                             </select>
                                             <div class="help-block with-errors"></div>
                                         </div>
+                                        {{ Form::close() }}
                                         @php
                                         $carNumYears = App\Models\caryear::all();
                                         @endphp
@@ -140,7 +141,7 @@ check out
                                         @php
                                         $metros = App\Models\metro::all();
                                         @endphp
-                                        <div class="form-group col-sm-1">
+                                        <div class="form-group col-sm-4">
 
                                             <select name="metro" id="Dtype2" required>
 
@@ -153,12 +154,10 @@ check out
                                             <div class="help-block with-errors"></div>
                                         </div>
 
-
-
                                         @php
                                         $letters = App\Models\letter::all();
                                         @endphp
-                                        <div class="form-group col-sm-1">
+                                        <div class="form-group col-sm-4">
 
                                             <select name="letter" id="Dtype2" required>
 
@@ -524,7 +523,7 @@ check out
 
 
                         <div class="fieldsets mt20"> <button type="submit" id="p" name="submit" class="btn btn-main bg-btn w-fit mb20"><span>@lang('lang.OrderNow')<i class="fas fa-chevron-right fa-icon"></i></span> <span class="loader"></span></button> </div>
-                        </form>
+                        {{-- </form> --}}
 
                     </div>
                 </div>
@@ -535,6 +534,34 @@ check out
     </div>
     </div>
 </section>
+
+
+
+<script type="text/javascript">
+    $('#category').on('change', function(e){
+        console.log(e);
+        var cat_id = e.target.value;
+        $.get('/product/checkout/ajax/subcat?cat_id='+cat_id,function(data){
+            console.log(data);
+            //success
+            $('#subcategory').empty(); // Corrected selector
+            $.each(data,function(index,subcatObj){
+                $('#subcategory').append('<option value="'+subcatObj.id+'">'+subcatObj.subcategory_name+'</option>'); // Corrected selector
+            });
+
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
 
 <script>
     function toggleTextarea() {
@@ -550,14 +577,14 @@ check out
 
 </script>
 
-<script>
+{{-- <script>
     flatpickr("#myID", {});
 
 </script>
 <script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr">
 
-</script>
+</script> --}}
 </script>
 @endsection
 

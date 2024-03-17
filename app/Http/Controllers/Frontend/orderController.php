@@ -47,7 +47,7 @@ class orderController extends Controller
 
     {
 
-        
+
 
         $alldata = $request->all();
 
@@ -141,7 +141,6 @@ class orderController extends Controller
     function statusUpdate(Request $request)
     {
         $id = $request->id;
-
 
         order::findOrFail($id)->update([
 

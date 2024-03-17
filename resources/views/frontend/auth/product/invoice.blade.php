@@ -296,7 +296,7 @@ $setting = App\Models\setting::orderBy('id','desc')->get();
         <div class="invoice-header">
             <div class="invoice-flex-contents">
                 <div class="invoice-logo">
-                    {{-- <img src="https://24carservicedhaka.com/upload/logo/1782832158619925.jpg" alt=""> --}}
+                    <img src="https://24carservicedhaka.com/upload/logo/1782832158619925.jpg" alt="">
                 </div>
                 <div class="invoice-header-contents" style="float:right;margin-top:-120px;">
 
@@ -313,11 +313,11 @@ $setting = App\Models\setting::orderBy('id','desc')->get();
                     </ul>
                 </div>
                 <div class="invoice-single-details" style="float:right;margin-top:-120px;">
-                    <h4 class="invoice-details-title">{{ __('Ship To:') }}</h4>
+
                     <ul class="details-list">
-                        <li class="list"> <strong>{{ __('City') }}: </strong> {{ __('Dhaka 1215') }} </li>
-                        <li class="list"> <strong>{{ __('Area') }}: </strong> {{ __('Farmgate') }} </li>
-                        <li class="list"> <strong>{{ __('Address') }}: </strong>{{ __('149/A, ')  }} </li>
+
+                        <li class="list"> <strong>{{ __('Area') }}: </strong> {{ __('24 Car Service Dhaka') }} </li>
+                        <li class="list"> <strong>{{ __('Address') }}: </strong>{{ __('Plot 15 Sector 15 9 Avenue Road Uttara')  }} </li>
 
                     </ul>
                 </div>
@@ -340,7 +340,7 @@ $setting = App\Models\setting::orderBy('id','desc')->get();
                     <td>
                         {{ $products->productRelOrder->title}}<br>
 
-                        {{ $products}}<br>
+                        <br>
                     </td>
                     <td>{{  ($products->productRelOrder->price - $products->productRelOrder->discount) * $products->qty }}</td>
                     <td>{{ $products->qty}}</td>
